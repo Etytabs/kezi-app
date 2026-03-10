@@ -1,0 +1,81 @@
+Here is the Exhaustive, Pixel-Accurate Design System Specification for the Maternal & ANC (Antenatal Care) experience in Jasmin. This module is distinct from the general shop due to its clinical yet warm aesthetic (Teal/Emerald).
+I. The Core Identity (Maternal Theme)
+Unlike the Cycle (Pink/Purple) or Shop (Neutral/Glass), the Maternal section uses a Teal-Primary palette to signify safety, medicine, and growth.
+Semantic Role	Color Name	Hex Code	Tailwind Ref	Meaning
+Primary Brand	Teal	#0D9488	teal-600	Medical Trust, Safety.
+Secondary Accent	Emerald	#10B981	emerald-500	Growth, Vitality.
+Action Surface	Soft Teal	#F0FDFA	teal-50	Backgrounds for cards.
+Upload Widget	Dash Border	#D1D5DB	gray-300	Interactive Zones.
+II. Layout Architecture
+A. Header & Search
+Sticky Position: top-0, z-30.
+Background: bg-white/90 with backdrop-blur-xl.
+Filter Chips:
+Container: Horizontal scroll, gap-2, no-scrollbar.
+Chip (Active): bg-teal-600, text-white, border-teal-600.
+Chip (Inactive): bg-white, text-gray-600, border-gray-200.
+Geometry: rounded-full (Pill shape).
+Typography: text-xs (12px), Medium.
+B. The "Upload Prescription" Widget
+This is the Hero Interaction for this section.
+Dimensions: Fluid width, Height ~88px (p-6).
+Container:
+Border: 2px dashed.
+Color: gray-300 (Light) / gray-600 (Dark).
+Background: bg-gray-50 (Light) / bg-white/5 (Dark).
+Radius: rounded-2xl (16px).
+Interaction: hover:bg-gray-100 transition.
+Icon Geometry:
+Box: w-12 h-12 (48px).
+Shape: rounded-2xl (Squircle).
+Fill: bg-white (Light) / bg-lavender-900 (Dark).
+Shadow: shadow-sm.
+Symbol: <FileUp /> (Lucide), text-pink-500 (Contrast accent).
+Animation: group-hover:scale-110.
+III. Product Listings (Medicine Focused)
+A. List Item (The Row)
+Height: ~72px.
+Padding: p-4 (16px).
+Separators: divide-y divide-gray-50.
+Hover State:
+Background turns white (opaque).
+Title text turns Teal-600.
+Typography:
+Name: text-sm, Medium, text-gray-800.
+Desc: text-[10px], text-gray-500, mt-0.5.
+Price Tag:
+Font: text-sm, Bold.
+Color: text-teal-700 (Light) / text-teal-400 (Dark).
+B. Detail View (Product Page)
+When a medicine is selected:
+Hero Card:
+Background: bg-teal-50/50 (Light) / bg-white/5 (Dark).
+Border: None (Light) / border-white/10 (Dark).
+Radius: rounded-xl (12px).
+Padding: p-4.
+IV. Map & Location View (Pharmacy Finder)
+A. Toggle Switch (List vs Map)
+Container: bg-gray-100 (Light) / bg-white/10 (Dark), p-1, rounded-lg.
+Button: p-1.5, rounded-md.
+Active State: bg-white, shadow-sm.
+B. The Map Preview (Embedded)
+Aspect Ratio: 1:1 (Square).
+Radius: rounded-2xl.
+Markers:
+Color: Teal (#0D9488) for Pharmacies carrying maternal meds.
+Scale: 1.5 -> 2.0 (Hover).
+C. Merchant Summary Card (Slide-Up)
+Position: Absolute bottom-4, left-4, right-4.
+Z-Index: 10.
+Material: Glass (backdrop-blur-xl).
+Actions:
+Primary: "View Details" -> bg-teal-600 text-white.
+Secondary: "Directions" -> border border-gray-200.
+V. Iconography Specifics
+Category Icon: <Pill />
+Size: 16px.
+Color: text-teal-600.
+Empty State: <Sprout />
+Size: 48px.
+Container: w-20 h-20, bg-gradient-to-tr from-teal-50 to-pink-50.
+Color: text-teal-600.

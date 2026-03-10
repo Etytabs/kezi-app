@@ -1,0 +1,114 @@
+Here is the Exhaustive, Pixel-Accurate Specification & Architectural Breakdown for every major feature in the Jasmin ecosystem. This document unifies the Logic, UI, and Engineering constraints found in your codebase.
+1. Feature: Authentication & Onboarding
+Goal: A seamless, trust-building entry point that feels like a native app launch.
+A. Architectural Logic
+State Machine: Managed in App.tsx.
+'splash': Validates localStorage token. Enforces a 2.5s minimum duration to allow branding perception.
+'landing': Rendered if no token is found.
+'main': Rendered immediately if token exists (Hot Start).
+Auth Service: api.login(email) simulates a backend handshake (800ms delay). It automatically assigns role: 'admin' if the email matches admin@jasmin.app.
+B. Pixel-Accurate UI Specification
+Splash Screen:
+Background: bg-gradient-to-br from-pink-50 to-purple-100.
+Logo: <JasminBrandIcon /> scaled to 1.5x.
+Animation: animate-pulse-slow (3s duration).
+Landing Page:
+Hero Icon: 96px (w-24) circle, bg-pink-50, centered.
+Typography: Title is 4xl (36px), font-bold, tracking-tight. Gradient text (pink-500 -> purple-600).
+Sticky Action Zone: Bottom container with bg-white/90 and backdrop-blur-xl. Padding p-6.
+Auth Modal:
+Backdrop: bg-black/40 with backdrop-blur-sm (Native iOS feel).
+Card: Top corners rounded-3xl (24px).
+Input Fields: Height 52px (py-3.5). Background bg-gray-50. Focus ring pink-300.
+2. Feature: Cycle Tracking (The Core)
+Goal: Visually represent biological data using a "Gentle Glass" aesthetic.
+A. Architectural Logic
+Service Layer: cycleService.ts contains the deterministic algorithm.
+Phase Definitions:
+Menstrual: Days 1-5.
+Follicular: Days 6-13.
+Ovulation: Day 14 (Fixed for MVP).
+Luteal: Days 15+.
+Data Persistence: Stored in CycleConfig (SQL) or localStorage.
+B. Pixel-Accurate UI Specification
+The Cycle Wheel (CycleWheel.tsx):
+Canvas: 180px x 180px.
+Track: Stroke width 8px. Color gray-100 (Light) / white/5 (Dark).
+Progress Arc: Gradient pink-400 to purple-500. Rounded linecaps.
+The Knob: Outer diameter 20px (r=8.5 + 3px stroke). Shadow shadow-md.
+Ovulation Marker: A hollow dot (r=4, stroke 2px) positioned exactly at progress = 14/Total.
+Calendar Widget:
+Grid: 7 Columns.
+Day Cell: 40px x 40px circle.
+Phase Layer: An absolute div inside the cell with inset-1.5 (6px padding) and opacity-50.
+Selected State: Scales to 110%. Background gray-800 (High Contrast).
+Daily Insight Card:
+Background: Dynamic Linear Gradient (e.g., from-pink-500 to-rose-500 for Period).
+Corner Radius: rounded-2xl (16px).
+Shadow: shadow-lg.
+3. Feature: The Marketplace (Shop)
+Goal: Context-aware commerce blending inventory with biology.
+A. Architectural Logic
+Cycle-Synced Filtering: The product list highlights items based on the user's current phase.
+Logic: If Phase == Menstrual, auto-select Menstrual filter tag.
+View Toggle: Swaps between <GentleMap /> and Product List.
+Inventory System: Atomic decrement. Clicking "Reserve" hits /api/merchants/:id/reserve.
+B. Pixel-Accurate UI Specification
+Sticky Header:
+Height: Fluid (~60px).
+Material: bg-white/95 (Light) / bg-lavender-950/95 (Dark).
+Blur: backdrop-blur-md.
+Product List Item:
+Padding: p-4 (16px).
+Animation: Staggered animate-fade-in with 75ms delay per item.
+Interaction: Hover lifts card by 2px (-translate-y-0.5).
+Gentle Map:
+Style: Custom JSON removing all standard POIs.
+Markers: Custom SVG "Glass Drop".
+Idle: Scale 1.5.
+Hover: Scale 2.0.
+Tooltip: Floating glass div, z-index: 100, positioned by domEvent.clientX/Y.
+4. Feature: Maternal & ANC
+Goal: Specialized access for pregnancy and maternal needs.
+A. Architectural Logic
+Product Scope: Filters strictly for type: 'Medicine'.
+Camera Integration: Tapping "Upload Prescription" triggers navigator.mediaDevices.
+Constraint: Uses facingMode: 'environment' (Rear Camera).
+B. Pixel-Accurate UI Specification
+Theme Color: Teal (#0D9488). Used for buttons, active states, and icons.
+Upload Widget:
+Border: 2px dashed. Color gray-300 (Light) / gray-600 (Dark).
+Height: ~80px.
+Interaction: group-hover:scale-110 on the icon.
+Merchant Card (Maternal Context): Identical structure to Shop, but displays "Vitamins" and "Supplements" tags first.
+5. Feature: Profile & Management
+Goal: Managing identity, privacy, and dependents.
+A. Architectural Logic
+Multi-Profile: User object contains profiles: DependentProfile[].
+Active Context: Switching profiles updates user.activeProfileId. This changes the Dashboard Greeting ("Hello, [Dependent Name]").
+RBAC: The "Admin Panel" button is conditionally rendered: {user.role === 'admin' && ...}.
+B. Pixel-Accurate UI Specification
+Profile Switcher:
+Avatars: 56px (w-14) circle.
+Active State: Border 2px solid Pink-500 (Main) or Purple-500 (Dependent). Glow shadow-lg.
+Layout: Horizontal scroll with snap-x.
+Settings Cards:
+Geometry: rounded-3xl (24px).
+Headers: 10px uppercase, tracking-wider, text-gray-400, bg-gray-50 strip.
+Camera Modal:
+Overlay: bg-night-base/90 (Deep Lavender opaque).
+Viewport: Aspect Ratio 3/4 or 1/1. Border 1px solid white/10.
+6. Feature: Admin Panel
+Goal: User management for the platform owner.
+A. Architectural Logic
+Route Protection: Wrapped in a check. If not admin -> Navigate to="/home".
+Optimistic UI: When toggling a role, the UI updates instantly. If the API fails, it reverts.
+Safety: Logic prevents the current user from demoting themselves.
+B. Pixel-Accurate UI Specification
+User List Item:
+Height: 72px.
+Hover: bg-white/40 (Light) / bg-white/5 (Dark).
+Role Badge:
+Admin: bg-pink-500, Text White, shadow-lg.
+User: bg-gray-100, Text Gray-500.
+Toggle Animation: Smooth width transition when switching roles.

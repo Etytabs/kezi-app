@@ -1,0 +1,339 @@
+================================================================================
+                    KEZI INVESTOR PITCH DECK - CANVA PRO+ FORMAT
+================================================================================
+
+Instructions: Copy each slide section into a new Canva slide.
+Recommended template: Search "Pitch Deck" in Canva, choose purple/pink theme.
+
+================================================================================
+SLIDE 1: TITLE SLIDE
+================================================================================
+
+TITLE:
+Kezi
+
+SUBTITLE:
+Empowering Women's Health in Rwanda
+
+TAGLINE:
+Cycle Tracking | AI Health Companion | Curated Marketplace
+
+FOOTER:
+Investor Pitch Deck | 2026
+etytabs@gmail.com | kezi-cycle-tracker.replit.app
+
+
+================================================================================
+SLIDE 2: THE PROBLEM
+================================================================================
+
+TITLE:
+The Critical Gap in Women's Health
+
+POINT 1 - Limited Contraceptive Access:
+Only 48% of Rwandan women have access to modern contraceptives. Rural areas face even greater barriers with limited health facilities and supply chain challenges.
+
+POINT 2 - Fragmented Health Information:
+Women lack centralized, culturally-sensitive platforms for cycle tracking and maternal health education. Existing apps don't support Kinyarwanda or local payment methods.
+
+POINT 3 - Stigma & Privacy Concerns:
+Cultural barriers prevent open discussions about reproductive health. Women need discreet, private digital tools they can trust.
+
+KEY STAT:
+52% of Rwandan women have unmet contraceptive needs
+
+
+================================================================================
+SLIDE 3: MARKET OPPORTUNITY
+================================================================================
+
+TITLE:
+A Massive, Underserved Market
+
+STAT BOX 1:
+7M+
+Women of Reproductive Age in Rwanda
+
+STAT BOX 2:
+85%
+Mobile Phone Penetration
+
+STAT BOX 3:
+52%
+Unmet Contraceptive Need
+
+ADDITIONAL METRICS:
+- Rwanda FemTech Market Potential: RWF 50+ Billion by 2030
+- Digital Health Growth: 40% Year-over-Year
+- Mobile Money Users: 5.8 Million active users
+- E-commerce Growth: +35% annually
+
+
+================================================================================
+SLIDE 4: OUR SOLUTION
+================================================================================
+
+TITLE:
+Introducing Kezi
+
+SUBTITLE:
+Your Complete Women's Health Companion
+
+FEATURE 1 - Intelligent Cycle Tracking:
+Accurate predictions with fertility awareness. Multi-profile support for different life stages.
+
+FEATURE 2 - AI Health Companion:
+Personalized guidance in English, French & Kinyarwanda. Cycle-aware responses powered by GPT-4.
+
+FEATURE 3 - Curated Marketplace:
+Cycle-synced product recommendations from verified Rwandan merchants. MTN MoMo & Airtel Money payments.
+
+FEATURE 4 - Privacy First:
+Biometric authentication, Discreet Mode, and Privacy Veil for complete confidentiality.
+
+FEATURE 5 - Wellness Journal:
+Track symptoms, moods, and health patterns. Historical insights for better self-awareness.
+
+FEATURE 6 - Rwanda-First Design:
+Local geolocation, RWF currency, Mobile Money payments, Kinyarwanda support.
+
+
+================================================================================
+SLIDE 5: PRODUCT SHOWCASE
+================================================================================
+
+TITLE:
+The Kezi App Experience
+
+SUBTITLE:
+"Gentle Glassmorphism" design optimized for emotional safety and privacy
+
+SCREEN 1 - Cycle View:
+Beautiful circular wheel showing current day, phase, and fertility window. Color-coded phases for instant understanding.
+
+SCREEN 2 - Marketplace:
+Browse health products by category. Prices in RWF, stock availability, cycle-synced recommendations.
+
+SCREEN 3 - AI Chat:
+24/7 health companion. Ask questions in Kinyarwanda, French, or English. Personalized, cycle-aware responses.
+
+SCREEN 4 - Wellness Journal:
+Log mood, symptoms, energy levels daily. Patterns emerge over time to help understand your body.
+
+NOTE: Add app screenshots or mockups here
+Live App: kezi-cycle-tracker.replit.app
+
+
+================================================================================
+SLIDE 6: BUSINESS MODEL
+================================================================================
+
+TITLE:
+Multiple Revenue Streams
+
+REVENUE STREAM 1:
+Marketplace Commission
+10-15% on every transaction
+
+REVENUE STREAM 2:
+Premium Subscriptions
+RWF 3,900/month for advanced features
+
+REVENUE STREAM 3:
+Merchant Services
+Featured listings & analytics dashboards
+
+REVENUE STREAM 4:
+B2B Partnerships
+Health organizations, NGOs, corporate wellness
+
+UNIT ECONOMICS:
+- Average Order Value: RWF 7,500
+- Customer Acquisition Cost: RWF 2,500
+- Lifetime Value: RWF 45,000+
+- LTV:CAC Ratio: 18:1
+- Gross Margin Target: 65%
+
+
+================================================================================
+SLIDE 7: TRACTION & STATUS
+================================================================================
+
+TITLE:
+What We've Built
+
+SUBTITLE:
+Live MVP - Ready for Launch
+
+STATUS TABLE:
+Mobile App (iOS & Android) ............ Complete
+Cycle Tracking Algorithm .............. Complete
+AI Health Companion ................... Complete
+Marketplace & Cart .................... Complete
+Mobile Money Integration .............. Complete
+Merchant Dashboard .................... Complete
+Admin Analytics ...................... Complete
+Multilingual (EN/FR/RW) ............... Complete
+
+TECHNICAL HIGHLIGHTS:
+- Full-stack Expo React Native app
+- Express.js backend with PostgreSQL
+- OpenAI GPT-4 integration
+- Biometric authentication
+- 11 performance-optimized database indexes
+
+
+================================================================================
+SLIDE 8: ROADMAP
+================================================================================
+
+TITLE:
+18-Month Execution Plan
+
+Q1 2026 - Beta Launch:
+Onboard 500 beta users in Kigali
+Partner with 5 initial merchants
+Success: 500 users, 60% weekly retention
+
+Q2 2026 - Merchant Expansion:
+Onboard 20+ verified health merchants
+Launch delivery partnerships
+Success: 20+ merchants, RWF 5M GMV
+
+Q3 2026 - Premium Launch:
+Launch subscription tier
+Advanced AI & fertility tools
+Success: 10% premium conversion
+
+Q4 2026 - Rural Expansion:
+Expand to Southern & Western provinces
+Partner with community health workers
+Success: 10,000 users, RWF 20M MRR
+
+2027 - Regional Growth:
+Expand to Uganda and Kenya
+
+
+================================================================================
+SLIDE 9: FINANCIAL PROJECTIONS
+================================================================================
+
+TITLE:
+Path to Profitability
+
+YEAR 1 (2026):
+Monthly Active Users: 5,000
+Premium Subscribers: 500 (10%)
+Monthly GMV: RWF 15,000,000
+Monthly Revenue: RWF 3,500,000
+Annual Revenue: RWF 42,000,000
+Merchants: 30+
+
+YEAR 2 (2027):
+Monthly Active Users: 25,000
+Premium Subscribers: 3,000 (12%)
+Monthly GMV: RWF 75,000,000
+Monthly Revenue: RWF 20,000,000
+Annual Revenue: RWF 240,000,000
+Merchants: 100+
+
+KEY METRICS:
+Year 2 ARR: RWF 240M
+Growth Multiple: 5x
+Gross Margin: 65%
+
+
+================================================================================
+SLIDE 10: FUNDING REQUEST
+================================================================================
+
+TITLE:
+Pre-Seed Investment
+
+AMOUNT:
+RWF 200,000,000
+(~$150,000 USD)
+
+USE OF FUNDS:
+
+Product Development - RWF 66,000,000 (33%)
+App optimization, AI enhancement, infrastructure
+
+Marketing & User Acquisition - RWF 46,000,000 (23%)
+Community outreach, radio, social media, influencers
+
+Merchant Operations - RWF 34,000,000 (17%)
+Onboarding, logistics, payment integration
+
+Team Expansion - RWF 34,000,000 (17%)
+Developers, community managers, support
+
+Operations & Legal - RWF 20,000,000 (10%)
+RDB/RURA compliance, licensing, legal
+
+18-MONTH MILESTONES:
+10,000 active users | RWF 20M MRR | 50+ merchants | Series A ready
+
+
+================================================================================
+SLIDE 11: MEET THE FOUNDER
+================================================================================
+
+TITLE:
+Solo Founder
+
+INTRO:
+Passionate about leveraging technology to solve critical health challenges in Rwanda and across Africa.
+
+WHY I'M BUILDING THIS:
+Having witnessed firsthand the challenges women face accessing reproductive health resources in Rwanda, I'm committed to building technology that empowers women with privacy, dignity, and choice.
+
+WHAT I BRING:
+- Full-stack product development expertise
+- Deep understanding of Rwandan market
+- Multilingual (English, French, Kinyarwanda)
+- Scrappy, capital-efficient execution
+- Passion for women's health innovation
+
+LOOKING FOR:
+Strategic investors who understand the East African market and can provide mentorship alongside capital.
+
+
+================================================================================
+SLIDE 12: CALL TO ACTION
+================================================================================
+
+TITLE:
+Let's Empower Women's Health Together
+
+MAIN MESSAGE:
+Join us in building Rwanda's leading women's health platform. Every investment helps thousands of women take control of their health journey.
+
+TRY THE APP:
+kezi-cycle-tracker.replit.app
+
+CONTACT:
+etytabs@gmail.com
+
+CLOSING:
+Murakoze Cyane!
+(Thank you very much!)
+
+NEXT STEPS:
+1. Schedule a demo
+2. Review due diligence materials
+3. Discuss partnership opportunities
+
+
+================================================================================
+                              END OF PITCH DECK
+================================================================================
+
+CANVA PRO+ TIPS:
+
+1. Template: Search "Pitch Deck" or "Startup Pitch" - choose purple theme
+2. Colors: Use #E91E8C (pink) and #7B2D8E (purple) for Kezi branding
+3. Font: Inter or Montserrat work well
+4. Add your app screenshots to Slide 5
+5. Use Canva's chart tools for the financial projections
+6. Export as PDF or PPTX when done

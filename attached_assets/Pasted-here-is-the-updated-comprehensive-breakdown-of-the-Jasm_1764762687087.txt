@@ -1,0 +1,74 @@
+here is the updated, comprehensive breakdown of the Jasmin application architecture, UI philosophy, and logical flow.
+I. High-Level Architecture
+Jasmin is a Hybrid Monolith. It is developed as a modern Single Page Application (SPA) but served in production by a lightweight Node.js/Express backend that also handles API logic and database connectivity.
+Frontend: React 18, TypeScript, Vite.
+Backend: Node.js, Express.
+ORM/Database: Prisma Client connecting to SQLite (Dev) or PostgreSQL (Prod).
+AI Engine: Google Gemini (gemini-2.5-flash) via the @google/genai SDK.
+Geospatial: Google Maps JavaScript API.
+Deployment Model: The Express server exposes two layers:
+/api/*: RESTful endpoints.
+/*: Serves the compiled static React build (dist/).
+II. UI/UX Architecture ("Gentle Glass")
+The application enforces a strict design system called Gentle Glassmorphism, optimized for emotional safety and privacy.
+Visual Language:
+Materiality: High usage of bg-white/60, backdrop-blur-xl, and border-white/20 to create depth without heavy shadows.
+Squircle Geometry: All containers use rounded-2xl or rounded-3xl to mimic organic shapes.
+Typography: Inter font family with tracking-wide headers to convey clinical precision mixed with elegance.
+Cycle-Synced Theming:
+The global bg-gradient-to-b is dynamic.
+Menstrual: Pink/Rose gradients.
+Follicular: Teal/Emerald gradients.
+Ovulation: Purple/Indigo gradients.
+Luteal: Soft Lavender gradients.
+Night Mode Strategy:
+Instead of true black, the app uses Deep Lavender (#1A1025 base, #2E2035 surface). This reduces eye strain while maintaining the brand identity in low-light environments.
+III. Application Logic & State Flow
+The application acts as a finite state machine managed in App.tsx.
+1. The Boot Sequence (appState: 'splash')
+Parallel Hydration:
+Visual: A 2.5s timer runs to ensure the SplashScreen animation completes.
+Data: api.getCurrentUser() checks localStorage for a token.
+Fork: If a token exists, the user is hydrated, and the app jumps to 'main'. If not, it transitions to 'landing'.
+2. The Main Shell (appState: 'main')
+Routing: HashRouter manages client-side navigation (/home, /cycle, /shop, /me, /admin).
+Data Fetching: On mount, MainApp triggers a concurrent fetch of:
+CycleData (from DB via API)
+Merchants & Stock (from DB via API)
+Connectivity: Event listeners toggle isOffline. When connectivity returns, api.syncData() flushes the local action queue to the server.
+IV. Domain Architectures
+A. Cycle Tracking Engine
+Logic (cycleService.ts): A simplified deterministic algorithm. It calculates the current phase based on the delta between Date.now() and CycleConfig.lastPeriodDate.
+Persistence: Users store their configuration in the CycleConfig table via Prisma.
+Visualization (CycleWheel.tsx): SVG trigonometry renders the cycle arc. The "Ovulation Marker" is mathematically plotted at Day 14 (relative to cycle length).
+AI Journaling: Users write entries (stored in JournalEntry table). The Gemini API is called to analyze the last 5 entries and generate a "Wellness Summary" string.
+B. The Marketplace (Commerce & Geo)
+Data Model: Product, Merchant, and a junction table Stock.
+Geospatial (GentleMap.tsx):
+Injects a custom JSON style array to force Google Maps into "Deep Lavender" mode.
+Renders custom SVG markers that scale on hover.
+Smart Filtering:
+Cycle Sync: Products have tags (e.g., 'menstrual'). The ShopScreen compares these tags against the user's current calculated phase to highlight relevant items.
+Stock Logic: The FacilityCard checks stock levels. Clicking "Reserve" hits the /api/merchants/:id/reserve endpoint, which performs an atomic decrement on the Stock table.
+C. User & Profile Management
+Multi-Profile: The User model supports a one-to-many relation with DependentProfile. The UI allows switching the "Active Context," altering the Dashboard greeting.
+Camera: Uses navigator.mediaDevices to capture base64 images for Avatars or Prescription scanning.
+RBAC (Role-Based Access Control):
+Frontend: The /admin route redirects non-admins.
+Backend: (To be implemented) Middleware would verify the role field in the JWT.
+Admin Panel: Provides optimistic UI updates for promoting/demoting users.
+V. Backend & Database Layer
+The new server.js and Prisma layer provide the backbone:
+Schema (schema.prisma):
+User: Stores profile, role, wishlist (JSON), and search history.
+CycleConfig: Stores tracking parameters per user.
+JournalEntry: Stores diary logs and tags.
+Merchant / Product / Stock: relational commerce data.
+API Service (api.ts):
+Previously a mock, this now uses fetch() to hit the Express endpoints.
+Offline Queue: If !navigator.onLine, write actions (POST/PUT) are pushed to localStorage. The syncData function iterates through this queue when the connection is restored.
+VI. PWA Strategy
+Manifest: Defines the "Deep Lavender" background and "Brand Pink" theme color for native-like installation.
+Service Worker:
+Caching: Uses NetworkFirst strategy for /api/merchants/list (ensuring fresh stock data if possible, falling back to cache).
+Assets: Uses StaleWhileRevalidate for images and JS bundles.

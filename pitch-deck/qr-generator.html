@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kezi QR Codes</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #1A1025 0%, #2D1B3D 100%);
+            min-height: 100vh;
+            padding: 40px;
+            color: white;
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #E91E8C, #7B2D8E);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 2.5em;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #aaa;
+            margin-bottom: 40px;
+        }
+        
+        .qr-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .qr-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .qr-card h3 {
+            color: #E91E8C;
+            margin-bottom: 20px;
+        }
+        
+        .qr-code {
+            background: white;
+            padding: 15px;
+            border-radius: 12px;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+        
+        .qr-code img {
+            display: block;
+        }
+        
+        .url {
+            color: #888;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+            word-break: break-all;
+        }
+        
+        .download-btn {
+            background: linear-gradient(135deg, #E91E8C, #7B2D8E);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: transform 0.2s;
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .instructions {
+            max-width: 600px;
+            margin: 40px auto 0;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .instructions h4 {
+            color: #E91E8C;
+            margin-bottom: 15px;
+        }
+        
+        .instructions ol {
+            margin-left: 20px;
+            color: #ccc;
+            line-height: 1.8;
+        }
+        
+        .note {
+            text-align: center;
+            margin-top: 30px;
+            color: #666;
+            font-size: 0.85em;
+        }
+    </style>
+</head>
+<body>
+    <h1>Kezi QR Codes</h1>
+    <p class="subtitle">For your investor pitch deck</p>
+    
+    <div class="qr-container">
+        <div class="qr-card">
+            <h3>Web App</h3>
+            <div class="qr-code">
+                <img id="web-qr" src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://kezi-cycle-tracker.replit.app" alt="Web App QR Code">
+            </div>
+            <p class="url">kezi-cycle-tracker.replit.app</p>
+            <button class="download-btn" onclick="downloadQR('web')">Download QR</button>
+        </div>
+        
+        <div class="qr-card">
+            <h3>Expo Go (iOS/Android)</h3>
+            <div class="qr-code">
+                <img id="expo-qr" src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=exp://kezi-cycle-tracker.replit.app" alt="Expo Go QR Code">
+            </div>
+            <p class="url">exp://kezi-cycle-tracker.replit.app</p>
+            <button class="download-btn" onclick="downloadQR('expo')">Download QR</button>
+        </div>
+    </div>
+    
+    <div class="instructions">
+        <h4>How investors can use these QR codes:</h4>
+        <ol>
+            <li><strong>Web App QR:</strong> Scan with any phone camera to open the app in browser</li>
+            <li><strong>Expo Go QR:</strong> Download "Expo Go" app first, then scan this code to run the native mobile app</li>
+            <li>Right-click and save the QR image, or use the download button</li>
+            <li>Add the QR code to Slide 12 (Call to Action) in your Canva presentation</li>
+        </ol>
+    </div>
+    
+    <p class="note">Right-click on any QR code and select "Save Image As" to download for your pitch deck</p>
+
+    <script>
+        function downloadQR(type) {
+            const img = document.getElementById(type + '-qr');
+            const link = document.createElement('a');
+            link.href = img.src + '&format=png';
+            link.download = 'kezi-qr-' + type + '.png';
+            link.click();
+        }
+    </script>
+</body>
+</html>

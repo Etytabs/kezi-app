@@ -1,0 +1,104 @@
+Here is the Exhaustive, Pixel-Accurate Design System Specification for the Cycle Tracking & Calendar ecosystem in Jasmin.
+I. Biological Logic (The Visual Engine)
+The visual state of the entire screen is driven by a deterministic state machine defined in cycleService.ts.
+Phase	Day Range (Standard 28-Day)	Semantic Color	Tailwind Ref	Meaning
+Menstrual	Days 1 – 5	Brand Pink	pink-500	Shedding, Rest, Low Energy.
+Follicular	Days 6 – 10	Soft Teal	teal-400	Rising Energy, Preparation.
+Fertile	Days 11 – 15	Deep Teal	teal-600	High Energy, Conception Window.
+Ovulation	Day 14 (Peak)	Brand Purple	purple-600	Peak Fertility, Maximum Energy.
+Luteal	Days 16 – 28	Lavender/Gray	slate-400	Winding Down, PMS.
+II. The Cycle Wheel (Hero Component)
+This is a mathematically generated SVG component located at the top of the Cycle Screen.
+A. Canvas & Geometry
+ViewBox: 180 x 180 pixels.
+Rotation: -90deg (CSS rotate(-90 90 90)). Starts at 12 o'clock.
+Center Point: (90, 90).
+B. The Track (Background)
+Radius: 82px (90px - 8px stroke).
+Stroke Width: 8px.
+Line Cap: round.
+Color (Light): #F3F4F6 (Tailwind gray-100).
+Color (Dark): rgba(255, 255, 255, 0.05).
+C. The Progress Arc
+Radius: 82px.
+Stroke Width: 8px.
+Gradient: Linear Gradient (id="progressGradient").
+Start (0%): #F472B6 (Pink-400).
+End (100%): #A855F7 (Purple-500).
+Dash Array: Calculated via 2 * PI * r (~515.22).
+D. The Current Day Knob
+Outer Diameter: 20px.
+Construction: r=8.5 circle + strokeWidth=3 = 17 + 3 = 20px.
+Fill: #FFFFFF (Light) / #2E2035 (Dark).
+Stroke: #A855F7 (Purple-500).
+Shadow: drop-shadow-md.
+Pulse Ring: A secondary, concentric circle (r=10) with animate-pulse and opacity-50 provides a "living" heartbeat effect.
+E. Ovulation Marker (Target)
+Position: Fixed mathematically at Day 14 (Radians: (14/28 * 2PI) - PI/2).
+Diameter: 8px (r=4).
+Style: Solid Fill (White/Dark) + Stroke (Purple-600, 2px).
+Z-Index: Renders below the knob if they overlap.
+III. The Calendar Widget
+The calendar is a 7-column CSS Grid representing the current cycle month.
+A. Container Architecture
+Surface:
+Light: bg-white with border-gray-100.
+Dark: bg-lavender-900 (60% opacity) with backdrop-blur-md and border-white/5.
+Corner Radius: rounded-3xl (24px).
+Padding: p-4 (16px).
+B. The Day Cell (Interaction Unit)
+Dimensions: 40px x 40px (Tailwind h-10 w-10).
+Shape: Perfect Circle (rounded-full).
+Typography: Inter, text-xs (12px).
+C. Visual State Logic (Layering)
+The visual state is built using Z-Index Layering within the button:
+Base Layer (Text):
+Standard: text-gray-700 (Light) / text-gray-300 (Dark).
+Today: Bold, text-pink-600 (Light) / text-pink-300 (Dark).
+Today Ring: ring-1 ring-pink-300 (Hollow circle).
+Phase Indicator Layer (The Inner Dot):
+Implementation: An absolute div with inset-1.5 (6px from edge) -> Resulting size 28px.
+Opacity: Fixed at 0.5 (50%).
+Menstrual: bg-pink-300 (Light) / bg-pink-600 (Dark).
+Fertile: bg-teal-200 (Light) / bg-teal-700 (Dark).
+Ovulation: bg-purple-400 (Light) / bg-purple-500 (Dark) + ring-1 ring-white.
+Selection Layer (Top State):
+Trigger: isSelected === true.
+Effect: Overrides everything below.
+Background: bg-gray-800 (Light) / bg-white (Dark). High Contrast.
+Text: text-white (Light) / text-black (Dark).
+Transform: scale-110 (10% growth).
+Shadow: shadow-lg.
+Data Dot (Log Indicator):
+Position: Absolute, bottom-1 (4px from bottom).
+Size: 4px x 4px.
+Color: bg-pink-500 (Active) / bg-gray-500 (Inactive).
+IV. Contextual Insight Cards
+Located immediately below the wheel, these cards change appearance based on the phase.
+A. Gradient Maps
+Menstrual: bg-gradient-to-r from-pink-500 to-rose-500.
+Fertile: bg-gradient-to-r from-teal-400 to-emerald-500.
+Ovulation: bg-gradient-to-r from-purple-500 to-indigo-500.
+Luteal (Default): bg-gradient-to-r from-slate-400 to-slate-600.
+B. Content Layout
+Corner Radius: rounded-2xl (16px).
+Icon Bubble: p-2, bg-white/20, backdrop-blur-sm.
+Typography:
+Title: text-sm, Bold, text-white/90.
+Body: text-xs, Medium, text-white/80.
+V. Quick Log Interface
+A. Selected Day Header
+Layout: Flex row with a semantic badge.
+Badge: px-2 py-0.5, rounded-full, text-[10px], uppercase, tracking-wide.
+Period Day: bg-pink-100 text-pink-600.
+Normal Day: bg-gray-100 text-gray-500.
+B. Quick Add Buttons (Horizontal Scroll)
+Container: flex gap-3 overflow-x-auto.
+Button Card:
+Min-Width: 72px.
+Padding: p-3.
+Surface: bg-white (Light) / bg-lavender-900 (Dark).
+Border: 1px solid gray-100 / white/5.
+Interaction: active:scale-95.
+Icon Circle: w-8 h-8 rounded-full.
+Colors: Hardcoded per symptom type (Pink, Orange, Yellow, Blue).

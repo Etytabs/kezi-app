@@ -1,0 +1,47 @@
+Recommended Architecture
+Backend Stack
+Separate NestJS Backend with:
+
+PostgreSQL (via Replit's built-in database) with PostGIS for Rwanda geolocation
+Redis for session caching
+JWT authentication with role-based access control
+Database Schema (Core Tables)
+Users (id, email, name, role, created_at)
+├── UserProfiles (preferences, cycle_config)
+├── Orders (user_id, merchant_id, status, total)
+└── AnalyticsEvents (user behavior tracking)
+Merchants (id, user_id, business_name, verified, status)
+├── MerchantDocuments (ID verification, business permits)
+├── Stores (merchant_id, name, address, lat, lng)
+├── Products (store_id, name, price, stock, category)
+└── MerchantAnalytics (sales, performance metrics)
+Admin
+├── AuditLogs (action tracking for compliance)
+├── AdminExports (data exports for Ministry of Health)
+└── SystemMetrics (app-wide statistics)
+
+Authentication Flow
+Users: Email/password signup with standard access
+Merchants: Admin creates account → system generates login credentials → magic link sent
+Admin: Predefined admin accounts with full system access
+Navigation Architecture (3 Separate App Shells)
+Role	Tabs/Screens
+User	Home, Cycle, Shop, Maternal, Profile
+Merchant	Dashboard, Products, Orders, Analytics, Store Settings
+Admin	Verification Queue, Merchants, Users, Analytics, Exports, System Health
+Map Integration for Rwanda
+Mapbox GL is recommended (better Rwanda coverage + offline tiles) with:
+
+Pharmacy/Store locations with clustering
+Delivery radius visualization
+Address geocoding for Rwanda
+App Store Compliance
+Requirement	iOS App Store	Google Play
+Privacy Policy	Required URL	Required URL
+Data Safety Form	App Privacy Details	Data Safety Section
+Account Deletion	In-app deletion flow	In-app deletion flow
+Location Disclosure	Purpose string in Info.plist	Manifest permissions
+Payment Processing	Apple Pay / Stripe	Google Pay / Stripe
+Age Rating	4+ (Health & Fitness)	Everyone
+Implementation Approach
+This will require adding a backend to the project. Since you're on Replit, we can use the built-in PostgreSQL database and create API routes. Here's the phased approach:

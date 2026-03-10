@@ -1,0 +1,95 @@
+Here is the Exhaustive, Pixel-Accurate Design System Specification for the Jasmin Logo (Logotype and Brand Icon). This document serves as the implementation reference for branding consistency.
+1. The Logotype (Text Mark)
+This is the primary identifier used in the Application Header, Splash Screen, and Marketing material.
+A. Typography Architecture
+Font Family: Inter (Google Fonts).
+Weight: Bold (700).
+Case: Title Case (Capital "J", lowercase "asmin").
+Kerning (Tracking): -0.025em (Tailwind tracking-tight).
+Visual Intent: The letters "J" and "a" should feel tightly packed, creating a solid unit, while the "min" breathes slightly more to convey lightness.
+Render Style: Sub-pixel antialiased.
+B. Color Gradient Architecture
+The signature look is a linear horizontal gradient representing the transition from "Biological Care" (Pink) to "Technological Wisdom" (Purple).
+Direction: Linear, 90 degrees (Left to Right).
+Stop 1 (0% - "Jas"):
+Semantic Name: Jasmine Pink.
+Hex: #EC4899 (Tailwind pink-500).
+RGB: 236, 72, 153.
+Stop 2 (100% - "min"):
+Semantic Name: Deep Violet.
+Hex: #9333EA (Tailwind purple-600).
+RGB: 147, 51, 234.
+CSS Implementation:
+code
+CSS
+background: linear-gradient(to right, #EC4899, #9333EA);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+color: transparent;
+C. Dark Mode Adaptation
+In the "Night Mode" (Deep Lavender theme), the gradient remains but interacts differently with the dark background.
+Fallback Color: #E9D5FF (Tailwind text-purple-100) is used if the gradient cannot render or for non-hero instances.
+Preferred: The gradient is kept as-is, as it maintains sufficient contrast ratio (>4.5:1) against the #1A1025 night base.
+2. The Brand Icon (Symbol)
+This is the standalone graphical mark used for the App Icon, Favicon, Loading Spinners, and Decorative Headers. It represents the Jasminum flower geometry.
+A. Canvas & Grid
+ViewBox: 24x24 pixels.
+Coordinate Origin: Center (12, 12).
+Grid System: Cartesian, strictly centered.
+B. Petal Geometry (The Array)
+Count: 5 identical petals.
+Distribution: Radial array rotated at 72° intervals (0°, 72°, 144°, 216°, 288°).
+Shape Logic (Cubic Bézier):
+Start: M0 0 (Center).
+Left Edge: C-2.5 -5 -4.5 -9 0 -11.
+Breakdown: Creates an outward bulge peaking around y=-9.
+Right Edge: C4.5 -9 2.5 -5 0 0.
+Breakdown: Symmetric return to center.
+Dimensions: Each petal is approx. 11px long from center to tip.
+C. Center Geometry (The Stamen)
+The center consists of three stacked SVG circles to create depth and lighting (pseudo-3D effect).
+Layer 1 (Base):
+Shape: Circle (r=2.5).
+Position: cx=0, cy=0.
+Fill: #D97706 (Tailwind amber-600).
+Layer 2 (Core):
+Shape: Circle (r=1.5).
+Position: cx=0, cy=0.
+Fill: #F59E0B (Tailwind amber-500).
+Layer 3 (Specular Highlight):
+Shape: Circle (r=0.5).
+Position: Offset cx=0.8, cy=-0.8 (Top-right quadrant).
+Fill: #FEF3C7 (Tailwind amber-100).
+Opacity: 0.8 (80%).
+D. Color Palette (Icon Specific)
+Petal Fill: #FDE047 (Tailwind yellow-300). A bright, optimistic yellow.
+Petal Stroke: #FACC15 (Tailwind yellow-400). Adds definition.
+Width: 0.5px.
+E. Animation Behavior
+Splash Screen: The icon applies animate-spin-slow (3s linear infinite) or animate-pulse-slow (opacity breathing) to mimic a blooming flower.
+Loading State: animate-spin (1s linear).
+3. Implementation Code Reference (JasminBrandIcon.tsx)
+code
+Tsx
+<svg 
+  viewBox="0 0 24 24" 
+  fill="none" 
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+>
+  <g transform="translate(12,12)">
+    {/* Petals x5 */}
+    <path d="M0 0 C-2.5 -5 -4.5 -9 0 -11 C4.5 -9 2.5 -5 0 0" fill="#FDE047" stroke="#FACC15" strokeWidth="0.5" />
+    <path d="..." transform="rotate(72)" ... />
+    <path d="..." transform="rotate(144)" ... />
+    <path d="..." transform="rotate(216)" ... />
+    <path d="..." transform="rotate(288)" ... />
+
+    {/* Center Stack */}
+    <circle cx="0" cy="0" r="2.5" fill="#D97706" />
+    <circle cx="0" cy="0" r="1.5" fill="#F59E0B" />
+    <circle cx="0.8" cy="-0.8" r="0.5" fill="#FEF3C7" opacity="0.8" />
+  </g>
+</svg>

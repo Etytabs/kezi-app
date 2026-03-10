@@ -1,0 +1,100 @@
+Here is the Exhaustive, Pixel-Accurate Design System Specification for Jasmin. This document serves as the "Source of Truth" for all UI implementation, strictly derived from the "Gentle Glass" aesthetic and the codebase.
+1. Typography (La Police)
+Font Family: Inter (Google Fonts)
+Fallback: system-ui, sans-serif
+Rendering: Sub-pixel antialiased.
+Semantic Role	Size	Weight	Tracking (Letter Spacing)	Color (Light / Dark)	Usage
+Logotype	24px	Bold (700)	-0.025em (tight)	Gradient (Pink→Purple)	App Header
+Hero Greeting	30px	Bold (700)	-0.025em (tight)	#1F2937 / #E9D5FF	Dashboard Greeting
+Section Header	10px	Bold (700)	0.05em (wider)	#9CA3AF / #9CA3AF	"TODAY'S STATUS", "QUICK ADD"
+Card Title	24px	Bold (700)	Normal	#111827 / #FFFFFF	Cycle Journey Card
+Body (Main)	14px	Medium (500)	Normal	#374151 / #D1D5DB	General Content
+Body (Sub)	12px	Regular (400)	Normal	#6B7280 / #9CA3AF	Helper text, metadata
+Number (Big)	48px	Bold (700)	Normal	#1F2937 / #FFFFFF	Cycle Day Display
+Chip Label	10px	Bold (700)	0.025em (wide)	Dynamic	Status Pills
+2. Color Palette (The "Gentle" System)
+The system relies on semantically named colors rather than raw hex codes in usage, but these are the specific definitions.
+A. Brand Gradients (The "Soul")
+Primary Gradient: linear-gradient(to right, #EC4899, #9333EA) (Pink-500 to Purple-600).
+Usage: Buttons, Logotype, Active Icons.
+Cycle Gradients (Dynamic Backgrounds):
+Menstrual: from-pink-50 via-rose-50 to-pink-50 (#FDF2F8 base).
+Follicular: from-teal-50 via-emerald-50 to-teal-50 (#F0FDFA base).
+Ovulation: from-purple-50 via-indigo-50 to-purple-50 (#FAF5FF base).
+Luteal: from-pink-50 via-purple-50 to-teal-50 (The default blend).
+B. Functional Status Colors
+State	Light Mode Hex	Dark Mode Hex	Tailwind Ref	Usage
+Menstrual	#EC4899	#F472B6	pink-500/400	Period UI, Flow
+Fertile	#0D9488	#2DD4BF	teal-600/400	Follicular UI, Shop Pharmacy
+Ovulation	#9333EA	#A855F7	purple-600/500	Peak Fertility, Admin
+Warning/Mood	#F59E0B	#FBBF24	amber-500/400	Low Stock, "Happy" Mood
+Danger	#EF4444	#F87171	red-500/400	Out of Stock, "Heavy" Flow
+Success	#10B981	#34D399	emerald-500/400	In Stock, Saved
+C. The "Night Mode" (Deep Lavender)
+Used to avoid harsh black contrast.
+Night Base: #1A1025 (Main Background)
+Night Surface: #2E2035 (Cards/Modals)
+Night Deep: #3D2B4C (Inputs/Active States)
+Night Text: #E9D5FF (Primary Text)
+3. Iconography Specification
+All icons are sourced from Lucide React.
+Stroke Width: 2px (Standard) or 2.5px (Active/Featured).
+Corner Radius: round (Cap/Join).
+A. Specific Icon Definitions
+Cycle Journey Icon (The Droplet)
+Symbol: <Droplet />
+Container: 48x48px (w-12 h-12), rounded-2xl (Squircle).
+Light: Bg #FCE7F3 (pink-100), Stroke #BE185D (pink-700).
+Dark: Bg #831843 (pink-900/20), Stroke #FBCFE8 (pink-200).
+Daily Inspiration Icon (The Heart)
+Symbol: <Heart />
+Size: 18px.
+Stroke: 2.5px.
+Color: #EC4899 (pink-500).
+Bottom Navigation Icons
+Size: 24px.
+Inactive: #9CA3AF (gray-400), Stroke 2px.
+Active: #9333EA (purple-600), Stroke 2.5px.
+Active Container: bg-purple-50 (Light) / bg-[#3D2B4C] (Dark), -translate-y-2 shift.
+Map Markers (Custom SVG)
+Shape: "Glass Drop" (Pin shape).
+Fill: #EC4899 (Pink) or #0D9488 (Teal) based on Merchant Type.
+Stroke: #FFFFFF, Width 2px.
+Interaction: Scale 1.5 -> 2.0 on hover.
+4. Structural Elements & Geometry
+A. Containers (The "Squircle" Rule)
+The app avoids sharp corners entirely.
+Standard Card: rounded-3xl (24px). Used for Dashboard cards, Profile sections.
+Small Elements: rounded-2xl (16px). Used for Insights, List Items.
+Buttons/Inputs: rounded-xl (12px).
+Pills/Chips: rounded-full (9999px).
+B. Glassmorphism (Materiality)
+Light Glass:
+Background: rgba(255, 255, 255, 0.6)
+Blur: backdrop-filter: blur(24px)
+Border: 1px solid rgba(255, 255, 255, 0.5)
+Shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05)
+Dark Glass:
+Background: rgba(46, 32, 53, 0.6) (Lavender-950 @ 60%)
+Blur: backdrop-filter: blur(24px)
+Border: 1px solid rgba(255, 255, 255, 0.1)
+C. The Cycle Wheel (Hero Widget)
+Dimensions: 180px x 180px.
+Track: 8px stroke, text-gray-100.
+Progress Arc: 8px stroke, Gradient (#F472B6 -> #A855F7).
+Knob: 20px diameter (r=8.5 + 3px stroke).
+Fill: White / Dark Lavender.
+Stroke: #A855F7.
+Effect: shadow-md.
+D. The "Action Zone" (Sticky Bottom UI)
+Height: Fluid padding (pb-safe).
+Surface: bg-white/90 (Light) / bg-lavender-950/90 (Dark).
+Border: Top border 1px solid gray-100/white/10.
+Z-Index: z-50 (Floats above content).
+5. Animation Specification
+animate-fade-in: Opacity 0 -> 1, Duration 0.5s, Ease-out.
+animate-slide-up: TranslateY 20px -> 0, Opacity 0 -> 1, Duration 0.4s.
+animate-pulse-slow: Opacity 1 -> 0.5 -> 1, Duration 3s (Used for Splash Icon).
+Hover States:
+Cards: scale-[1.01] + shadow-md (Micro-lift).
+Buttons: active:scale-95 (Tactile press).

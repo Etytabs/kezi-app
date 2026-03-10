@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kezi - Investor Pitch Deck</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/reveal.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/theme/white.min.css">
+    <style>
+        :root {
+            --kezi-pink: #E91E8C;
+            --kezi-purple: #7B2D8E;
+            --kezi-dark: #1A1025;
+            --kezi-light: #F8F4FC;
+            --kezi-gradient: linear-gradient(135deg, #E91E8C 0%, #7B2D8E 100%);
+        }
+        
+        .reveal {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        
+        .reveal h1, .reveal h2, .reveal h3 {
+            font-weight: 700;
+            color: var(--kezi-dark);
+        }
+        
+        .reveal .slides section {
+            text-align: left;
+        }
+        
+        .title-slide {
+            text-align: center !important;
+        }
+        
+        .title-slide h1 {
+            font-size: 4em;
+            background: var(--kezi-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.2em;
+        }
+        
+        .title-slide .tagline {
+            font-size: 1.5em;
+            color: #666;
+            margin-bottom: 2em;
+        }
+        
+        .title-slide .founder {
+            font-size: 1em;
+            color: #888;
+        }
+        
+        .gradient-text {
+            background: var(--kezi-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .stat-box {
+            background: var(--kezi-gradient);
+            color: white;
+            padding: 30px;
+            border-radius: 16px;
+            text-align: center;
+            margin: 10px;
+        }
+        
+        .stat-box .number {
+            font-size: 2.2em;
+            font-weight: 700;
+        }
+        
+        .stat-box .label {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .feature-card {
+            background: white;
+            border: 2px solid #E91E8C;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 10px 0;
+        }
+        
+        .feature-card h4 {
+            color: var(--kezi-purple);
+            margin: 0 0 10px 0;
+        }
+        
+        .problem-item {
+            display: flex;
+            align-items: flex-start;
+            margin: 20px 0;
+            padding: 15px;
+            background: #FFF5F9;
+            border-radius: 10px;
+            border-left: 4px solid var(--kezi-pink);
+        }
+        
+        .solution-item {
+            display: flex;
+            align-items: flex-start;
+            margin: 20px 0;
+            padding: 15px;
+            background: #F0FDF4;
+            border-radius: 10px;
+            border-left: 4px solid #22C55E;
+        }
+        
+        .funding-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        .funding-table th {
+            background: var(--kezi-gradient);
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+        
+        .funding-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .funding-table tr:nth-child(even) {
+            background: #F8F4FC;
+        }
+        
+        .app-screenshot {
+            max-width: 250px;
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            margin: 10px;
+        }
+        
+        .screenshots-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .cta-slide {
+            text-align: center !important;
+        }
+        
+        .cta-slide h2 {
+            font-size: 2.5em;
+        }
+        
+        .app-link {
+            display: inline-block;
+            background: var(--kezi-gradient);
+            color: white !important;
+            padding: 20px 50px;
+            border-radius: 50px;
+            font-size: 1.3em;
+            font-weight: 600;
+            text-decoration: none;
+            margin-top: 30px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .app-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(233, 30, 140, 0.4);
+        }
+        
+        .metric-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .metric-label {
+            font-weight: 500;
+            color: #666;
+        }
+        
+        .metric-value {
+            font-weight: 700;
+            color: var(--kezi-purple);
+            font-size: 1.2em;
+        }
+        
+        .timeline-item {
+            display: flex;
+            margin: 15px 0;
+        }
+        
+        .timeline-marker {
+            width: 40px;
+            height: 40px;
+            background: var(--kezi-gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+        
+        .timeline-content h4 {
+            margin: 0 0 5px 0;
+            color: var(--kezi-dark);
+        }
+        
+        .timeline-content p {
+            margin: 0;
+            color: #666;
+            font-size: 0.9em;
+        }
+        
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+        
+        .highlight-box {
+            background: var(--kezi-dark);
+            color: white;
+            padding: 25px;
+            border-radius: 16px;
+            margin: 20px 0;
+        }
+        
+        .highlight-box h3 {
+            color: white;
+            margin-top: 0;
+        }
+        
+        .logo-flower {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+        
+        .founder-section {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .founder-avatar {
+            width: 120px;
+            height: 120px;
+            background: var(--kezi-gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3em;
+            font-weight: bold;
+        }
+        
+        .founder-info h3 {
+            margin: 0 0 5px 0;
+        }
+        
+        .founder-info p {
+            margin: 0;
+            color: #666;
+        }
+        
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        ul li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        ul li::before {
+            content: "\\2713";
+            position: absolute;
+            left: 0;
+            color: var(--kezi-pink);
+            font-weight: bold;
+        }
+        
+        .small-text {
+            font-size: 0.8em;
+            color: #888;
+        }
+        
+        .reveal .slide-number {
+            background: var(--kezi-gradient);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+        }
+        
+        /* Print/Export Button */
+        .export-controls {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .export-btn {
+            background: var(--kezi-gradient);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 14px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .export-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(233, 30, 140, 0.3);
+        }
+        
+        .export-btn.secondary {
+            background: white;
+            color: var(--kezi-purple);
+            border: 2px solid var(--kezi-purple);
+        }
+        
+        /* Print styles */
+        @media print {
+            .export-controls {
+                display: none !important;
+            }
+            
+            .reveal .slides section {
+                page-break-after: always;
+                min-height: 100vh;
+            }
+            
+            .reveal .controls,
+            .reveal .progress,
+            .reveal .slide-number {
+                display: none !important;
+            }
+        }
+        
+        .currency-note {
+            font-size: 0.75em;
+            color: #888;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Export Controls -->
+    <div class="export-controls" id="exportControls">
+        <button class="export-btn" onclick="printToPDF()">Export to PDF</button>
+        <button class="export-btn secondary" onclick="toggleFullscreen()">Fullscreen</button>
+    </div>
+
+    <div class="reveal">
+        <div class="slides">
+            <!-- Slide 1: Title -->
+            <section class="title-slide">
+                <div class="logo-flower">&#10047;</div>
+                <h1>Kezi</h1>
+                <p class="tagline">Empowering Women's Health in Rwanda</p>
+                <p class="founder">Cycle Tracking & Maternal Health Marketplace</p>
+                <p class="small-text" style="margin-top: 40px;">Investor Pitch Deck | 2026</p>
+            </section>
+
+            <!-- Slide 2: The Problem -->
+            <section>
+                <h2><span class="gradient-text">The Problem</span></h2>
+                <p style="font-size: 1.1em; color: #666; margin-bottom: 30px;">Access to reproductive health resources remains a critical challenge in Rwanda.</p>
+                
+                <div class="problem-item">
+                    <div>
+                        <strong>Limited Contraceptive Access</strong><br>
+                        <span style="color: #666;">Only 48% of Rwandan women have access to modern contraceptives. Rural areas face even greater barriers with limited health facilities and supply chain issues.</span>
+                    </div>
+                </div>
+                
+                <div class="problem-item">
+                    <div>
+                        <strong>Fragmented Health Information</strong><br>
+                        <span style="color: #666;">Women lack centralized, culturally-sensitive platforms for cycle tracking, fertility awareness, and maternal health education in local languages.</span>
+                    </div>
+                </div>
+                
+                <div class="problem-item">
+                    <div>
+                        <strong>Stigma & Privacy Concerns</strong><br>
+                        <span style="color: #666;">Cultural barriers prevent open discussions about reproductive health. Women need discreet, private digital tools they can trust.</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 3: Market Opportunity -->
+            <section>
+                <h2><span class="gradient-text">Market Opportunity</span></h2>
+                
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <div class="number">7M+</div>
+                        <div class="label">Women of Reproductive Age in Rwanda</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="number">85%</div>
+                        <div class="label">Mobile Phone Penetration</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="number">52%</div>
+                        <div class="label">Unmet Contraceptive Need</div>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 40px;">
+                    <div class="metric-row">
+                        <span class="metric-label">Rwanda FemTech Market Potential</span>
+                        <span class="metric-value">RWF 50B+ by 2030</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">Women seeking digital health solutions</span>
+                        <span class="metric-value">Growing 40% YoY</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">E-commerce growth in Rwanda</span>
+                        <span class="metric-value">+35% annually</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">Mobile Money users in Rwanda</span>
+                        <span class="metric-value">5.8M active users</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 4: Our Solution -->
+            <section>
+                <h2><span class="gradient-text">Our Solution: Kezi</span></h2>
+                <p style="color: #666; margin-bottom: 25px;">An all-in-one mobile platform combining cycle tracking, AI-powered health guidance, and a curated marketplace for women's health products.</p>
+                
+                <div class="two-column">
+                    <div>
+                        <div class="solution-item">
+                            <div>
+                                <strong>Intelligent Cycle Tracking</strong><br>
+                                <span style="color: #666;">Accurate predictions with fertility awareness. Multi-profile support for different life stages.</span>
+                            </div>
+                        </div>
+                        
+                        <div class="solution-item">
+                            <div>
+                                <strong>AI Health Companion</strong><br>
+                                <span style="color: #666;">Personalized guidance based on cycle phase. Available in English, French & Kinyarwanda.</span>
+                            </div>
+                        </div>
+                        
+                        <div class="solution-item">
+                            <div>
+                                <strong>Curated Marketplace</strong><br>
+                                <span style="color: #666;">Cycle-synced product recommendations. Direct access to verified Rwandan health merchants.</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div class="solution-item">
+                            <div>
+                                <strong>Privacy First</strong><br>
+                                <span style="color: #666;">Biometric authentication, Discreet Mode, and Privacy Veil for complete confidentiality.</span>
+                            </div>
+                        </div>
+                        
+                        <div class="solution-item">
+                            <div>
+                                <strong>Wellness Journal</strong><br>
+                                <span style="color: #666;">Track symptoms, moods, and health patterns. Historical insights for better self-awareness.</span>
+                            </div>
+                        </div>
+                        
+                        <div class="solution-item">
+                            <div>
+                                <strong>Rwanda-First Design</strong><br>
+                                <span style="color: #666;">Rwanda geolocation, RWF currency, MTN/Airtel Mobile Money payments.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 5: Product Screenshots -->
+            <section>
+                <h2><span class="gradient-text">The App Experience</span></h2>
+                <p style="color: #666; text-align: center; margin-bottom: 30px;">"Gentle Glassmorphism" design optimized for emotional safety and privacy</p>
+                
+                <div class="screenshots-container">
+                    <div style="text-align: center;">
+                        <div style="width: 220px; height: 440px; background: linear-gradient(180deg, #1A1025 0%, #2D1B3D 100%); border-radius: 24px; display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 0 auto; box-shadow: 0 20px 60px rgba(0,0,0,0.3);">
+                            <div style="font-size: 60px; margin-bottom: 10px;">&#10047;</div>
+                            <div style="color: white; font-size: 24px; font-weight: bold;">Cycle Tracking</div>
+                            <div style="color: #E91E8C; font-size: 14px; margin-top: 10px;">Day 14 - Ovulation</div>
+                            <div style="width: 150px; height: 150px; border: 4px solid #E91E8C; border-radius: 50%; margin-top: 20px; display: flex; align-items: center; justify-content: center;">
+                                <div style="color: white; font-size: 36px; font-weight: bold;">14</div>
+                            </div>
+                        </div>
+                        <p style="color: #666; font-size: 0.9em; margin-top: 15px;">Cycle View</p>
+                    </div>
+                    
+                    <div style="text-align: center;">
+                        <div style="width: 220px; height: 440px; background: linear-gradient(180deg, #1A1025 0%, #2D1B3D 100%); border-radius: 24px; display: flex; flex-direction: column; align-items: center; padding: 30px 15px; margin: 0 auto; box-shadow: 0 20px 60px rgba(0,0,0,0.3);">
+                            <div style="color: white; font-size: 18px; font-weight: bold; margin-bottom: 20px;">Shop</div>
+                            <div style="background: rgba(255,255,255,0.1); border-radius: 12px; padding: 15px; width: 100%; margin-bottom: 10px;">
+                                <div style="color: white; font-size: 14px;">Menstrual Care</div>
+                                <div style="color: #E91E8C; font-size: 12px;">RWF 2,500 - 15,000</div>
+                            </div>
+                            <div style="background: rgba(255,255,255,0.1); border-radius: 12px; padding: 15px; width: 100%; margin-bottom: 10px;">
+                                <div style="color: white; font-size: 14px;">Wellness Products</div>
+                                <div style="color: #7B2D8E; font-size: 12px;">RWF 5,000 - 25,000</div>
+                            </div>
+                            <div style="background: rgba(255,255,255,0.1); border-radius: 12px; padding: 15px; width: 100%;">
+                                <div style="color: white; font-size: 14px;">Prenatal Care</div>
+                                <div style="color: #22C55E; font-size: 12px;">RWF 8,000 - 35,000</div>
+                            </div>
+                        </div>
+                        <p style="color: #666; font-size: 0.9em; margin-top: 15px;">Marketplace</p>
+                    </div>
+                    
+                    <div style="text-align: center;">
+                        <div style="width: 220px; height: 440px; background: linear-gradient(180deg, #1A1025 0%, #2D1B3D 100%); border-radius: 24px; display: flex; flex-direction: column; align-items: center; padding: 30px 15px; margin: 0 auto; box-shadow: 0 20px 60px rgba(0,0,0,0.3);">
+                            <div style="color: white; font-size: 18px; font-weight: bold; margin-bottom: 20px;">AI Assistant</div>
+                            <div style="background: rgba(233,30,140,0.2); border-radius: 12px; padding: 12px; width: 100%; margin-bottom: 10px; text-align: left;">
+                                <div style="color: #E91E8C; font-size: 12px;">Kezi AI</div>
+                                <div style="color: white; font-size: 13px; margin-top: 5px;">Muraho! Based on your cycle, here are tips for today...</div>
+                            </div>
+                            <div style="background: rgba(255,255,255,0.1); border-radius: 12px; padding: 12px; width: 100%; margin-bottom: 10px; text-align: right;">
+                                <div style="color: white; font-size: 13px;">Ni ibihe biryo nkwiye kurya?</div>
+                            </div>
+                            <div style="background: rgba(233,30,140,0.2); border-radius: 12px; padding: 12px; width: 100%; text-align: left;">
+                                <div style="color: white; font-size: 13px;">During ovulation, focus on iron-rich foods...</div>
+                            </div>
+                        </div>
+                        <p style="color: #666; font-size: 0.9em; margin-top: 15px;">AI Chat (Trilingual)</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 6: Business Model -->
+            <section>
+                <h2><span class="gradient-text">Business Model</span></h2>
+                
+                <div class="two-column">
+                    <div>
+                        <h3>Revenue Streams</h3>
+                        <ul>
+                            <li><strong>Marketplace Commission</strong> - 10-15% on each transaction</li>
+                            <li><strong>Premium Subscriptions</strong> - Advanced AI features, family planning tools</li>
+                            <li><strong>Merchant Services</strong> - Featured listings, analytics dashboard</li>
+                            <li><strong>B2B Partnerships</strong> - Health organizations, NGOs, hospitals</li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <div class="highlight-box">
+                            <h3>Why This Works in Rwanda</h3>
+                            <ul style="color: white;">
+                                <li>High mobile money adoption (MTN MoMo, Airtel Money)</li>
+                                <li>Strong government health initiatives</li>
+                                <li>Growing middle class seeking digital solutions</li>
+                                <li>First-mover advantage in local FemTech</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="stats-grid" style="margin-top: 30px;">
+                    <div class="stat-box">
+                        <div class="number">RWF 7,500</div>
+                        <div class="label">Avg. Order Value (Entry)</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="number">RWF 3,900/mo</div>
+                        <div class="label">Premium Subscription</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="number">10-15%</div>
+                        <div class="label">Marketplace Commission</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 7: Traction & Metrics -->
+            <section>
+                <h2><span class="gradient-text">Traction & Roadmap</span></h2>
+                
+                <div class="two-column">
+                    <div>
+                        <h3>Current Status</h3>
+                        <div class="metric-row">
+                            <span class="metric-label">Platform Status</span>
+                            <span class="metric-value">Live MVP</span>
+                        </div>
+                        <div class="metric-row">
+                            <span class="metric-label">Languages Supported</span>
+                            <span class="metric-value">3 (EN, FR, RW)</span>
+                        </div>
+                        <div class="metric-row">
+                            <span class="metric-label">Core Features</span>
+                            <span class="metric-value">Complete</span>
+                        </div>
+                        <div class="metric-row">
+                            <span class="metric-label">Mobile Platforms</span>
+                            <span class="metric-value">iOS & Android</span>
+                        </div>
+                        <div class="metric-row">
+                            <span class="metric-label">Payment Integration</span>
+                            <span class="metric-value">Mobile Money Ready</span>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3>Roadmap</h3>
+                        <div class="timeline-item">
+                            <div class="timeline-marker">Q1</div>
+                            <div class="timeline-content">
+                                <h4>Beta Launch - Kigali</h4>
+                                <p>Onboard 500 beta users in Kigali districts</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-marker">Q2</div>
+                            <div class="timeline-content">
+                                <h4>Merchant Onboarding</h4>
+                                <p>Partner with 20+ verified health merchants & pharmacies</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-marker">Q3</div>
+                            <div class="timeline-content">
+                                <h4>Premium Launch</h4>
+                                <p>Subscription tiers and advanced AI features</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-marker">Q4</div>
+                            <div class="timeline-content">
+                                <h4>Rural Expansion</h4>
+                                <p>Extend to Southern & Western provinces</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 8: Funding Ask -->
+            <section>
+                <h2><span class="gradient-text">Funding Request</span></h2>
+                <p style="font-size: 1.3em; color: var(--kezi-purple); margin-bottom: 30px;"><strong>Seeking: RWF 200,000,000 Pre-Seed</strong></p>
+                <p class="currency-note">(Approximately $150,000 USD at current exchange rate)</p>
+                
+                <table class="funding-table">
+                    <thead>
+                        <tr>
+                            <th>Use of Funds</th>
+                            <th>Amount (RWF)</th>
+                            <th>Purpose</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Product Development</strong></td>
+                            <td>RWF 66,000,000 (33%)</td>
+                            <td>Mobile app optimization, AI enhancement, infrastructure</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Marketing & User Acquisition</strong></td>
+                            <td>RWF 46,000,000 (23%)</td>
+                            <td>Community outreach, radio campaigns, social media</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Merchant Operations</strong></td>
+                            <td>RWF 34,000,000 (17%)</td>
+                            <td>Merchant onboarding, logistics, payment integration</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Team Expansion</strong></td>
+                            <td>RWF 34,000,000 (17%)</td>
+                            <td>Developers, community managers, support staff</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Operations & Legal</strong></td>
+                            <td>RWF 20,000,000 (10%)</td>
+                            <td>Compliance (RDB, RURA), licensing, operational costs</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="highlight-box" style="margin-top: 30px;">
+                    <h3>18-Month Target Milestones</h3>
+                    <p style="margin: 0; color: #ccc;">10,000 active users | RWF 20M MRR | 50+ merchant partners | Position for Series A</p>
+                </div>
+            </section>
+
+            <!-- Slide 9: Financial Projections -->
+            <section>
+                <h2><span class="gradient-text">Financial Projections</span></h2>
+                
+                <div class="two-column">
+                    <div>
+                        <h3>Year 1 Targets</h3>
+                        <div class="metric-row">
+                            <span class="metric-label">Monthly Active Users</span>
+                            <span class="metric-value">5,000</span>
+                        </div>
+                        <div class="metric-row">
+                            <span class="metric-label">Premium Subscribers</span>
+                            <span class="metric-value">500 (10%)</span>
+                        </div>
+                        <div class="metric-row">
+                            <span class="metric-label">Monthly Marketplace GMV</span>
+                            <span class="metric-value">RWF 15M</span>
+                        </div>
+                        <div class="metric-row">
+                            <span class="metric-label">Monthly Revenue</span>
+                            <span class="metric-value">RWF 3.5M</span>
+                        </div>
+                        <div class="metric-row">
+                            <span class="metric-label">Verified Merchants</span>
+                            <span class="metric-value">30+</span>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3>Year 2 Targets</h3>
+                        <div class="metric-row">
+                            <span class="metric-label">Monthly Active Users</span>
+                            <span class="metric-value">25,000</span>
+                        </div>
+                        <div class="metric-row">
+                            <span class="metric-label">Premium Subscribers</span>
+                            <span class="metric-value">3,000 (12%)</span>
+                        </div>
+                        <div class="metric-row">
+                            <span class="metric-label">Monthly Marketplace GMV</span>
+                            <span class="metric-value">RWF 75M</span>
+                        </div>
+                        <div class="metric-row">
+                            <span class="metric-label">Monthly Revenue</span>
+                            <span class="metric-value">RWF 20M</span>
+                        </div>
+                        <div class="metric-row">
+                            <span class="metric-label">Verified Merchants</span>
+                            <span class="metric-value">100+</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="stats-grid" style="margin-top: 30px;">
+                    <div class="stat-box">
+                        <div class="number">RWF 240M</div>
+                        <div class="label">Year 2 ARR Target</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="number">5x</div>
+                        <div class="label">Growth Multiple</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="number">65%</div>
+                        <div class="label">Gross Margin Target</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 10: Solo Founder -->
+            <section>
+                <h2><span class="gradient-text">Meet the Founder</span></h2>
+                
+                <div class="founder-section">
+                    <div class="founder-avatar">E</div>
+                    <div class="founder-info">
+                        <h3>Solo Founder</h3>
+                        <p style="font-size: 1.1em; margin-top: 10px;">Passionate about leveraging technology to solve critical health challenges in Rwanda and across Africa.</p>
+                    </div>
+                </div>
+                
+                <div class="two-column" style="margin-top: 40px;">
+                    <div>
+                        <h4>Why I'm Building This</h4>
+                        <p style="color: #666;">Having witnessed firsthand the challenges women face accessing reproductive health resources in Rwanda, I'm committed to building technology that empowers women with privacy, dignity, and choice. Kezi represents my mission to bridge the gap between technology and women's health.</p>
+                    </div>
+                    
+                    <div>
+                        <h4>What I Bring</h4>
+                        <ul>
+                            <li>Full-stack product development expertise</li>
+                            <li>Deep understanding of Rwandan market</li>
+                            <li>Passion for women's health innovation</li>
+                            <li>Scrappy, capital-efficient execution</li>
+                            <li>Multilingual (English, French, Kinyarwanda)</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 30px; padding: 20px; background: #F8F4FC; border-radius: 12px;">
+                    <p style="margin: 0; color: #666;"><strong>Looking for:</strong> Strategic investors who understand the Rwandan/East African market and can provide mentorship, local connections, and guidance alongside capital.</p>
+                </div>
+            </section>
+
+            <!-- Slide 11: Call to Action -->
+            <section class="cta-slide">
+                <div class="logo-flower" style="font-size: 4em;">&#10047;</div>
+                <h2>Let's Empower Women's Health Together</h2>
+                <p style="font-size: 1.2em; color: #666; max-width: 600px; margin: 0 auto;">Join us in building Rwanda's leading women's health platform. Every investment helps thousands of women take control of their health journey.</p>
+                
+                <a href="https://kezi-cycle-tracker.replit.app" target="_blank" class="app-link">
+                    Try Kezi Now
+                </a>
+                
+                <p style="margin-top: 40px; color: #888;">
+                    <strong>Contact:</strong> etytabs@gmail.com<br>
+                    <span class="small-text">kezi-cycle-tracker.replit.app</span>
+                </p>
+                
+                <p style="margin-top: 30px; font-size: 0.9em; color: #aaa;">
+                    Murakoze cyane! (Thank you very much!)
+                </p>
+            </section>
+
+            <!-- Slide 12: Appendix - Features Detail -->
+            <section>
+                <h2><span class="gradient-text">Appendix: Feature Details</span></h2>
+                
+                <div class="two-column">
+                    <div>
+                        <div class="feature-card">
+                            <h4>Cycle Tracking</h4>
+                            <ul style="margin: 0; font-size: 0.9em;">
+                                <li>Deterministic phase calculation</li>
+                                <li>Interactive cycle wheel</li>
+                                <li>Fertility window detection</li>
+                                <li>Multi-profile support</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <h4>AI Health Companion</h4>
+                            <ul style="margin: 0; font-size: 0.9em;">
+                                <li>GPT-4 powered responses</li>
+                                <li>Cycle-aware personalization</li>
+                                <li>Memory persistence</li>
+                                <li>Trilingual support (EN/FR/RW)</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div class="feature-card">
+                            <h4>Marketplace</h4>
+                            <ul style="margin: 0; font-size: 0.9em;">
+                                <li>Cycle-synced recommendations</li>
+                                <li>MTN MoMo & Airtel Money payments</li>
+                                <li>Verified merchant system</li>
+                                <li>Rwanda geolocation & delivery</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <h4>Admin Platform</h4>
+                            <ul style="margin: 0; font-size: 0.9em;">
+                                <li>Real-time analytics dashboard</li>
+                                <li>Merchant management & approval</li>
+                                <li>Inventory monitoring</li>
+                                <li>Audit trail & compliance</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/reveal.min.js"></script>
+    <script>
+        Reveal.initialize({
+            hash: true,
+            slideNumber: true,
+            controls: true,
+            progress: true,
+            center: false,
+            transition: 'slide',
+            backgroundTransition: 'fade'
+        });
+        
+        // Print to PDF function
+        function printToPDF() {
+            // Add print parameter to URL for reveal.js PDF export
+            const printUrl = window.location.href.split('?')[0] + '?print-pdf';
+            
+            // Show instructions
+            alert('To export as PDF:\\n\\n1. Press Ctrl+P (or Cmd+P on Mac)\\n2. Select "Save as PDF" as the printer\\n3. Set margins to "None"\\n4. Enable "Background graphics"\\n5. Click Save\\n\\nAlternatively, use the browser print dialog that will open.');
+            
+            // Trigger print
+            window.print();
+        }
+        
+        // Fullscreen toggle
+        function toggleFullscreen() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen();
+            } else {
+                document.exitFullscreen();
+            }
+        }
+        
+        // Hide export controls during presentation mode
+        Reveal.on('slidechanged', event => {
+            // Keep controls visible
+        });
+    </script>
+</body>
+</html>

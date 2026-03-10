@@ -3,7 +3,7 @@ import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBNW-il6CxoFH_fSVuMTm7AKy3uN3sF8XM",
+  apiKey: process.env.EXPO_PUBLIC_FIREBASE_API_KEY,
   authDomain: "kezi-b50f9.firebaseapp.com",
   projectId: "kezi-b50f9",
   storageBucket: "kezi-b50f9.firebasestorage.app",

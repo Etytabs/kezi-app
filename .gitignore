@@ -31,3 +31,9 @@ static-build/
 
 # node
 node_modules/
+
+# Replit
+.replit
+.config/
+.upm/
+.cache/

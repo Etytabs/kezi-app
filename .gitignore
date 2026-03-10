@@ -1,39 +1,33 @@
 # dependencies
 node_modules/
 
-# environment variables
+# env
 .env
-
-# logs
-logs
-*.log
-npm-debug.log*
-
-# build
-dist
-build
+.env.local
 
 # expo
 .expo/
-.expo-shared
+.expo-shared/
+
+# build
+dist/
+build/
+web-build/
+static-build/
+
+# cache
+.cache/
+npm-debug.log*
+
+# ios / android
+ios/build/
+android/build/
+
+# replit
+.replit
+.config/
+.upm/
 
 # OS
 .DS_Store
 Thumbs.db
-# Build files
-static-build/
-
-# Replit config
-.config/
-
-# environment
-.env
-
-# node
-node_modules/
-
-# Replit
-.replit
-.config/
-.upm/
-.cache/

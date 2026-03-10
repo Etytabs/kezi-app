@@ -1,0 +1,38 @@
+2026-03-10 15:32:12.949 UTC [603] LOG:  starting PostgreSQL 16.6 on x86_64-pc-linux-gnu, compiled by gcc (GCC) 13.2.0, 64-bit
+2026-03-10 15:32:12.949 UTC [603] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2026-03-10 15:32:12.952 UTC [603] FATAL:  could not create lock file "/run/postgresql/.s.PGSQL.5432.lock": No such file or directory
+2026-03-10 15:32:12.952 UTC [603] LOG:  database system is shut down
+2026-03-10 15:32:30.893 UTC [692] LOG:  starting PostgreSQL 16.6 on x86_64-pc-linux-gnu, compiled by gcc (GCC) 13.2.0, 64-bit
+2026-03-10 15:32:30.893 UTC [692] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2026-03-10 15:32:30.895 UTC [692] FATAL:  could not create lock file "/run/postgresql/.s.PGSQL.5432.lock": No such file or directory
+2026-03-10 15:32:30.896 UTC [692] LOG:  database system is shut down
+2026-03-10 15:37:51.349 UTC [1846] LOG:  starting PostgreSQL 16.6 on x86_64-pc-linux-gnu, compiled by gcc (GCC) 13.2.0, 64-bit
+2026-03-10 15:37:51.349 UTC [1846] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2026-03-10 15:37:51.353 UTC [1846] LOG:  listening on Unix socket "/home/user/jasminintegrate/.postgres_socket/.s.PGSQL.5432"
+2026-03-10 15:37:51.360 UTC [1849] LOG:  database system was shut down at 2026-03-10 15:31:57 UTC
+2026-03-10 15:37:51.367 UTC [1846] LOG:  database system is ready to accept connections
+2026-03-10 15:37:55.712 UTC [1892] LOG:  invalid length of startup packet
+2026-03-10 15:37:55.714 UTC [1893] LOG:  invalid length of startup packet
+2026-03-10 15:38:17.414 UTC [1982] FATAL:  database "user" does not exist
+2026-03-10 15:42:51.441 UTC [1847] LOG:  checkpoint starting: time
+2026-03-10 15:44:38.870 UTC [1847] LOG:  checkpoint complete: wrote 1075 buffers (6.6%); 0 WAL file(s) added, 0 removed, 0 recycled; write=107.402 s, sync=0.018 s, total=107.430 s; sync files=464, longest=0.003 s, average=0.001 s; distance=5692 kB, estimate=5692 kB; lsn=0/1AD6E60, redo lsn=0/1AD6E28
+2026-03-10 15:55:21.962 UTC [7928] FATAL:  role "postgres" does not exist
+2026-03-10 16:00:27.660 UTC [9184] FATAL:  role "postgres" does not exist
+2026-03-10 16:02:52.166 UTC [1847] LOG:  checkpoint starting: time
+2026-03-10 16:02:52.581 UTC [1847] LOG:  checkpoint complete: wrote 5 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.403 s, sync=0.003 s, total=0.415 s; sync files=5, longest=0.003 s, average=0.001 s; distance=3 kB, estimate=5123 kB; lsn=0/1AD7C20, redo lsn=0/1AD7BE8
+2026-03-10 16:03:32.085 UTC [10092] ERROR:  type "merchant_status" already exists
+2026-03-10 16:03:32.085 UTC [10092] STATEMENT:  CREATE TYPE merchant_status AS ENUM ('PENDING', 'VERIFIED', 'SUSPENDED', 'REJECTED')
+2026-03-10 16:03:32.086 UTC [10092] ERROR:  type "order_status" already exists
+2026-03-10 16:03:32.086 UTC [10092] STATEMENT:  CREATE TYPE order_status AS ENUM ('PENDING', 'CONFIRMED', 'PROCESSING', 'SHIPPED', 'DELIVERED', 'CANCELLED')
+2026-03-10 16:03:32.087 UTC [10092] ERROR:  type "payment_method" already exists
+2026-03-10 16:03:32.087 UTC [10092] STATEMENT:  CREATE TYPE payment_method AS ENUM ('CASH_ON_DELIVERY', 'MOBILE_MONEY', 'CARD')
+2026-03-10 16:03:32.087 UTC [10092] ERROR:  type "document_type" already exists
+2026-03-10 16:03:32.087 UTC [10092] STATEMENT:  CREATE TYPE document_type AS ENUM ('BUSINESS_LICENSE', 'TAX_CERTIFICATE', 'ID_CARD', 'PHARMACY_LICENSE')
+2026-03-10 17:32:51.019 UTC [29208] ERROR:  type "merchant_status" already exists
+2026-03-10 17:32:51.019 UTC [29208] STATEMENT:  CREATE TYPE merchant_status AS ENUM ('PENDING', 'VERIFIED', 'SUSPENDED', 'REJECTED')
+2026-03-10 17:32:51.020 UTC [29208] ERROR:  type "order_status" already exists
+2026-03-10 17:32:51.020 UTC [29208] STATEMENT:  CREATE TYPE order_status AS ENUM ('PENDING', 'CONFIRMED', 'PROCESSING', 'SHIPPED', 'DELIVERED', 'CANCELLED')
+2026-03-10 17:32:51.020 UTC [29208] ERROR:  type "payment_method" already exists
+2026-03-10 17:32:51.020 UTC [29208] STATEMENT:  CREATE TYPE payment_method AS ENUM ('CASH_ON_DELIVERY', 'MOBILE_MONEY', 'CARD')
+2026-03-10 17:32:51.021 UTC [29208] ERROR:  type "document_type" already exists
+2026-03-10 17:32:51.021 UTC [29208] STATEMENT:  CREATE TYPE document_type AS ENUM ('BUSINESS_LICENSE', 'TAX_CERTIFICATE', 'ID_CARD', 'PHARMACY_LICENSE')

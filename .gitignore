@@ -3,31 +3,25 @@ node_modules/
 
 # env
 .env
-.env.local
 
 # expo
-.expo/
-.expo-shared/
+mobile/.expo
+mobile/.expo-shared
 
 # build
-dist/
-build/
-web-build/
-static-build/
+dist
+build
+web-build
+static-build
 
-# cache
-.cache/
-npm-debug.log*
-
-# ios / android
-ios/build/
-android/build/
-
-# replit
-.replit
-.config/
-.upm/
+# database
+backend/postgres-data
+backend/postgres.log
 
 # OS
 .DS_Store
 Thumbs.db
+
+# replit
+.config
+.replit

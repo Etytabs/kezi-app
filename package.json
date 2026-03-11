@@ -1,0 +1,9 @@
+{
+    "name": "kezi-app",
+    "private": true,
+    "version": "1.0.0",
+    "description": "Kezi AI cycle tracking and chat platform",
+    "scripts": {
+      "setup": "bash scripts/setup.sh"
+    }
+  }

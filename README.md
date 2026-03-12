@@ -453,3 +453,40 @@ For app store submission, see the [Publishing to App Stores](#publishing-to-app-
 ## License
 
 This project is proprietary. All rights reserved.
+## Environment Setup
+
+Copy the example environment file:
+## Environment Setup
+
+Copy the example environment file:
+cp .env.example .env
+
+Then fill in the required environment variables.
+## Project Setup
+
+Clone the repository:
+
+
+git clone https://github.com/Etytabs/kezi-app.git
+
+cd kezi-app
+
+
+Run the setup script:
+
+
+npm run setup
+
+
+Start backend:
+
+
+cd backend
+npm run dev
+
+
+Start mobile:
+
+
+cd mobile
+npm start

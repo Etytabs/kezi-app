@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
@@ -7,6 +7,7 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 import { StatusBar } from "expo-status-bar";
 
 import { navigationRef } from "./services/navigation";
+import { checkApiHealth } from "./services/api";
 
 import MainTabNavigator from "./navigation/MainTabNavigator";
 import MerchantTabNavigator from "./navigation/MerchantTabNavigator";
@@ -34,8 +35,26 @@ function getNavigatorForRole(role?: string) {
 }
 
 function AppContent() {
+
   const { isLoading, isAuthenticated, user } = useAuth();
   const [showSplash, setShowSplash] = useState(true);
+
+  /* TEST CONNECTION BACKEND */
+
+  useEffect(() => {
+
+    async function testBackend() {
+      try {
+        const ok = await checkApiHealth();
+        console.log("✅ Backend connection:", ok);
+      } catch (err) {
+        console.log("❌ Backend unreachable");
+      }
+    }
+
+    testBackend();
+
+  }, []);
 
   const handleSplashComplete = () => {
     setShowSplash(false);

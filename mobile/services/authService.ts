@@ -1,18 +1,27 @@
-import { auth } from "./firebase";
-import {
-  signInWithEmailAndPassword,
-  createUserWithEmailAndPassword,
-  signOut
-} from "firebase/auth";
+import { authApi, setAuthToken, clearAuthToken } from "./api";
 
-export const login = async (email: string, password: string) => {
-  return signInWithEmailAndPassword(auth, email, password);
+export const login = async (email:string,password:string)=>{
+
+  const res = await authApi.login(email,password);
+
+  if(res.token){
+    await setAuthToken(res.token);
+  }
+
+  return res;
 };
 
-export const register = async (email: string, password: string) => {
-  return createUserWithEmailAndPassword(auth, email, password);
+export const register = async (email:string,name:string,password:string)=>{
+
+  const res = await authApi.register(email,name,password);
+
+  if(res.token){
+    await setAuthToken(res.token);
+  }
+
+  return res;
 };
 
-export const logout = async () => {
-  return signOut(auth);
+export const logout = async ()=>{
+  await clearAuthToken();
 };

@@ -3,7 +3,22 @@
     "private": true,
     "version": "1.0.0",
     "description": "Kezi AI cycle tracking and chat platform",
+  
     "scripts": {
-      "setup": "bash scripts/setup.sh"
+      "setup": "bash scripts/setup.sh",
+  
+      "dev": "concurrently \"npm run db\" \"npm run backend\" \"npm run tunnel\" \"npm run mobile\"",
+  
+      "db": "bash scripts/start-db.sh",
+  
+      "backend": "cd backend && npm run dev",
+  
+      "mobile": "cd mobile && npx expo start",
+  
+      "tunnel": "cloudflared tunnel --url http://localhost:3001"
+    },
+  
+    "devDependencies": {
+      "concurrently": "^9.2.1"
     }
   }

@@ -24,4 +24,13 @@ Thumbs.db
 
 # replit
 .config
-.replit
+.replit.s.PGSQL.*
+backend/postgres-data
+.postgres_socket
+.s.PGSQL.*
+# Log files
+logfile
+*.log
+
+# Database
+postgres-data/

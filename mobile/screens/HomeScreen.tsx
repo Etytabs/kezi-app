@@ -66,7 +66,11 @@ export default function HomeScreen() {
   }, []);
 
   return (
-    <ScreenScrollView>
+    <ScreenScrollView
+  onScrollDirectionChange={(direction) => {
+    console.log(direction);
+  }}
+>
       <Animated.View entering={FadeInDown.delay(100).duration(500)}>
         <ThemedText type="hero" style={styles.greeting}>
           {greeting}, {user?.name?.split(" ")[0] || "there"}

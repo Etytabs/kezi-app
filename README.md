@@ -127,114 +127,32 @@ Kezi is a comprehensive women's health platform built with Expo React Native and
 
 ```
 kezi/
-├── App.tsx                    # Root component with providers
-├── app.json                   # Expo configuration
-├── assets/
-│   └── images/                # App icons, splash, and assets
-├── components/
-│   ├── AIChatModal.tsx        # AI chat interface
-│   ├── BackButton.tsx         # Navigation back button
-│   ├── Card.tsx               # Base card component
-│   ├── CycleCalendar.tsx      # Calendar with phase indicators
-│   ├── CycleWheel.tsx         # Animated SVG cycle wheel
-│   ├── ErrorBoundary.tsx      # App crash recovery
-│   ├── FacilityCard.tsx       # Merchant/store card
-│   ├── GlassCard.tsx          # Glassmorphism card
-│   ├── InsightCard.tsx        # Phase-based insight card
-│   ├── PhaseIcon.tsx          # Cycle phase icons
-│   ├── PrivacyVeil.tsx        # Privacy overlay
-│   ├── ProductCard.tsx        # Shop product card
-│   ├── ScreenFlatList.tsx     # Safe-area aware FlatList
-│   ├── ScreenScrollView.tsx   # Safe-area aware ScrollView
-│   ├── ScreenKeyboardAwareScrollView.tsx
-│   ├── SharingPrivacyModal.tsx
-│   ├── ThemedText.tsx         # Theme-aware text
-│   └── ThemedView.tsx         # Theme-aware view
-├── constants/
-│   └── theme.ts               # Colors, spacing, typography, phase config
-├── context/
-│   ├── AuthContext.tsx         # Authentication state
-│   ├── DiscreetModeContext.tsx # Privacy mode toggle
-│   ├── LanguageContext.tsx     # i18n (EN/FR/RW)
-│   ├── ProfileContext.tsx     # User profile management
-│   └── ThemeContext.tsx        # Light/dark theme
-├── hooks/
-│   └── useTheme.ts            # Theme access hook
-├── navigation/
-│   ├── AuthNavigator.tsx      # Login/onboarding flow
-│   ├── MainTabNavigator.tsx   # Bottom tab navigation
-│   ├── CycleStackNavigator.tsx
-│   ├── HomeStackNavigator.tsx
-│   ├── MomStackNavigator.tsx
-│   ├── ProfileStackNavigator.tsx
-│   ├── ShopStackNavigator.tsx
-│   └── screenOptions.ts       # Shared screen options
-├── screens/
-│   ├── HomeScreen.tsx         # Dashboard with insights
-│   ├── CycleScreen.tsx        # Cycle tracking
-│   ├── JournalScreen.tsx      # Wellness journal
-│   ├── ShopScreen.tsx         # Product marketplace
-│   ├── ProductDetailScreen.tsx
-│   ├── MerchantDetailScreen.tsx
-│   ├── MerchantDiscoveryScreen.tsx
-│   ├── MaternalScreen.tsx     # Maternal health hub
-│   ├── PregnancyTrackerScreen.tsx
-│   ├── PostpartumScreen.tsx
-│   ├── PrescriptionScanScreen.tsx
-│   ├── ProfileScreen.tsx      # User profile
-│   ├── SettingsScreen.tsx     # App settings
-│   ├── LoginScreen.tsx
-│   ├── LandingScreen.tsx
-│   ├── OnboardingScreen.tsx
-│   ├── VerificationScreen.tsx
-│   ├── HealthIntegrationScreen.tsx
-│   ├── HealthDashboardScreen.tsx
-│   ├── ExportDataScreen.tsx
-│   ├── ManageProfilesScreen.tsx
-│   ├── NotificationSettingsScreen.tsx
-│   ├── PrivacyPolicyScreen.tsx
-│   ├── WishlistScreen.tsx
-│   ├── admin/                 # Admin-only screens
-│   │   ├── AdminDashboardScreen.tsx
-│   │   ├── AdminAnalyticsScreen.tsx
-│   │   ├── AdminMerchantsScreen.tsx
-│   │   ├── AdminSettingsScreen.tsx
-│   │   └── AdminUsersScreen.tsx
-│   └── merchant/              # Merchant-only screens
-│       ├── MerchantDashboardScreen.tsx
-│       ├── MerchantOrdersScreen.tsx
-│       ├── MerchantProductsScreen.tsx
-│       ├── MerchantProfileScreen.tsx
-│       └── MerchantStoresScreen.tsx
-├── services/
-│   ├── aiChatService.ts       # AI chat API integration
-│   ├── api.ts                 # Backend API client
-│   ├── biometricAuth.ts       # Face ID / Touch ID
-│   ├── cycleService.ts        # Cycle phase calculations
-│   ├── encryption.ts          # Data encryption utilities
-│   ├── mockData.ts            # Development seed data
-│   ├── navigation.ts          # Navigation helpers
-│   ├── sharingService.ts      # Data sharing & privacy
-│   └── storage.ts             # AsyncStorage persistence
-├── utils/
-│   └── currency.ts            # RWF currency formatting
-├── server/
-│   ├── index.ts               # Express server entry point
-│   ├── db/                    # Database connection & schema
-│   ├── routes/
-│   │   ├── admin.ts           # Admin management API
-│   │   ├── auth.ts            # Authentication API
-│   │   ├── chat.ts            # AI chat proxy API
-│   │   ├── cycle.ts           # Cycle data API
-│   │   ├── health.ts          # Health records API
-│   │   ├── journal.ts         # Journal entries API
-│   │   ├── merchants.ts       # Merchant management API
-│   │   ├── orders.ts          # Order processing API
-│   │   ├── products.ts        # Product catalog API
-│   │   └── stores.ts          # Store locations API
-│   └── services/
-│       └── encryption.ts      # Server-side encryption
-└── scripts/                   # Build & deployment scripts
+├── backend/
+│   ├── src/
+│   │   ├── controllers/
+│   │   ├── db/
+│   │   ├── middleware/
+│   │   ├── routes/
+│   │   └── services/
+│   ├── drizzle.config.ts
+│   ├── package.json
+│   └── tsconfig.json
+├── mobile/
+│   ├── App.tsx
+│   ├── app.json
+│   ├── assets/
+│   ├── components/
+│   ├── constants/
+│   ├── context/
+│   ├── hooks/
+│   ├── i18n/
+│   ├── navigation/
+│   ├── screens/
+│   ├── services/
+│   └── utils/
+├── pitch-deck/
+├── scripts/
+└── package.json
 ```
 
 ---
@@ -284,7 +202,7 @@ kezi/
 
 ### Environment Variables
 | Variable | Default | Description |
-|---|---|---|
+|---|---|
 | `EXPO_PUBLIC_API_URL` | `https://Kezirw.replit.app/api` | Backend API URL |
 | `API_PORT` | `3001` | Express server port |
 
@@ -294,7 +212,7 @@ kezi/
 
 ### Authentication
 | Method | Endpoint | Description |
-|---|---|---|
+|---|---|
 | POST | `/api/auth/register` | Register new user |
 | POST | `/api/auth/login` | User login |
 | POST | `/api/auth/verify` | Email verification |
@@ -302,20 +220,20 @@ kezi/
 
 ### Cycle Tracking
 | Method | Endpoint | Description |
-|---|---|---|
+|---|---|
 | GET | `/api/cycle` | Get cycle data |
 | POST | `/api/cycle` | Log cycle data |
 
 ### Journal
 | Method | Endpoint | Description |
-|---|---|---|
+|---|---|
 | GET | `/api/journal` | Get journal entries |
 | POST | `/api/journal` | Create journal entry |
 | DELETE | `/api/journal/:id` | Delete entry |
 
 ### Health Records
 | Method | Endpoint | Description |
-|---|---|---|
+|---|---|
 | GET | `/api/health/records` | List health records |
 | POST | `/api/health/records` | Batch create records |
 | DELETE | `/api/health/records` | Delete records |
@@ -326,7 +244,7 @@ kezi/
 
 ### Products & Marketplace
 | Method | Endpoint | Description |
-|---|---|---|
+|---|---|
 | GET | `/api/products` | List products |
 | GET | `/api/products/:id` | Product details |
 | GET | `/api/merchants` | List merchants |
@@ -334,18 +252,18 @@ kezi/
 
 ### Orders
 | Method | Endpoint | Description |
-|---|---|---|
+|---|---|
 | POST | `/api/orders` | Create order |
 | GET | `/api/orders` | List user orders |
 
 ### AI Chat
 | Method | Endpoint | Description |
-|---|---|---|
+|---|---|
 | POST | `/api/chat` | Send message to AI assistant |
 
 ### Admin
 | Method | Endpoint | Description |
-|---|---|---|
+|---|---|
 | GET | `/api/admin/analytics` | Dashboard analytics |
 | GET | `/api/admin/users` | Manage users |
 | GET | `/api/admin/merchants` | Manage merchants |

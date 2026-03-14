@@ -2,12 +2,12 @@ import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Feather } from "@expo/vector-icons";
 import { BlurView } from "expo-blur";
-import { Platform, StyleSheet, View } from "react-native";
+import { Platform, StyleSheet } from "react-native";
 import Animated, {
   useAnimatedStyle,
   withSpring,
-  interpolate,
 } from "react-native-reanimated";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import HomeStackNavigator from "@/navigation/HomeStackNavigator";
 import CycleStackNavigator from "@/navigation/CycleStackNavigator";
@@ -87,7 +87,10 @@ function TabIcon({ name, color, focused }: TabIconProps) {
 }
 
 export default function MainTabNavigator() {
+
+ 
   const { theme, isDark } = useTheme();
+  const insets = useSafeAreaInsets();
 
   return (
     <Tab.Navigator
@@ -103,16 +106,18 @@ export default function MainTabNavigator() {
           }),
           borderTopWidth: StyleSheet.hairlineWidth,
           borderTopColor: isDark
-            ? "rgba(255, 255, 255, 0.1)"
+            ? "rgba(255,255,255,0.1)"
             : KeziColors.gray[100],
-          elevation: 0,
-          height: Platform.OS === "ios" ? 88 : 64,
+          elevation: 8,
+          height: 64 + insets.bottom,
           paddingTop: 8,
+          paddingBottom: insets.bottom,
         },
         tabBarLabelStyle: {
           fontSize: 10,
           fontWeight: "600",
-          marginTop: 4,
+          marginTop: 2,
+          marginBottom: 4,
         },
         tabBarBackground: () =>
           Platform.OS === "ios" ? (
@@ -182,7 +187,7 @@ export default function MainTabNavigator() {
 const styles = StyleSheet.create({
   iconContainer: {
     width: 44,
-    height: 32,
+    height: 34,
     alignItems: "center",
     justifyContent: "center",
     borderRadius: BorderRadius.sm,

@@ -1,0 +1,12 @@
+{
+  "expo": {
+    "extra": {
+      "eas": {
+        "projectId": "f0b85614-1314-45f1-924b-ae7a92f6451e"
+      }
+    },
+    "android": {
+      "package": "kezi.rw"
+    }
+  }
+}

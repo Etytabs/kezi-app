@@ -34,3 +34,10 @@ logfile
 
 # Database
 postgres-data/
+
+mobile/dist
+mobile/.expo
+_expo
+
+logfile
+*.log

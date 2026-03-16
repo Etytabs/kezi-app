@@ -23,6 +23,8 @@ import { DiscreetModeProvider } from "./context/DiscreetModeContext";
 import { ProfileProvider } from "./context/ProfileContext";
 import { ThemeProvider } from "./context/ThemeContext";
 
+console.log("API URL:", process.env.EXPO_PUBLIC_API_URL);
+
 function getNavigatorForRole(role?: string) {
   switch (role) {
     case "merchant":

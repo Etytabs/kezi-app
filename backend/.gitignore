@@ -1,0 +1,38 @@
+# dependencies
+node_modules/
+
+# env
+.env
+.env.*
+
+# expo
+mobile/.expo
+mobile/.expo-shared
+
+# build
+dist
+build
+web-build
+static-build
+
+# database
+backend/postgres-data
+backend/postgres.log
+
+# local runtime
+.postgres
+.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# replit
+.config
+.replit
+
+node_modules
+dist
+postgres-data
+logfile
+.env

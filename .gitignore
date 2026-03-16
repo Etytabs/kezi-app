@@ -1,43 +1,147 @@
-# dependencies
+########################################
+# DEPENDENCIES
+########################################
+
 node_modules/
+**/node_modules/
 
-# env
+########################################
+# ENVIRONMENT VARIABLES (SECRETS)
+########################################
+
 .env
+.env.*
+!.env.example
 
-# expo
+mobile/.env
+backend/.env
+
+########################################
+# EXPO
+########################################
+
+.expo/
+.expo-shared/
 mobile/.expo
 mobile/.expo-shared
 
-# build
-dist
-build
-web-build
-static-build
+########################################
+# EXPO BUILD
+########################################
 
-# database
-backend/postgres-data
+web-build/
+mobile/web-build
+dist/
+build/
+
+########################################
+# EAS
+########################################
+
+.eas/
+
+########################################
+# TYPESCRIPT
+########################################
+
+*.tsbuildinfo
+
+########################################
+# DATABASE
+########################################
+
+postgres-data/
+backend/postgres-data/
+*.sqlite
+*.sqlite3
+*.db
+
+########################################
+# POSTGRES SOCKETS
+########################################
+
+.s.PGSQL.*
+.postgres_socket
+
+########################################
+# DATABASE LOGS
+########################################
+
+postgres.log
 backend/postgres.log
 
-# OS
+########################################
+# LOG FILES
+########################################
+
+logs/
+logfile
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+########################################
+# BACKUPS
+########################################
+
+*.backup
+*.sql
+
+########################################
+# OS FILES
+########################################
+
 .DS_Store
 Thumbs.db
 
-# replit
-.config
-.replit.s.PGSQL.*
-backend/postgres-data
-.postgres_socket
-.s.PGSQL.*
-# Log files
-logfile
-*.log
+########################################
+# IDE
+########################################
 
-# Database
-postgres-data/
+.vscode/*
+!.vscode/extensions.json
+.idea/
+
+########################################
+# TEMP FILES
+########################################
+
+tmp/
+temp/
+
+########################################
+# REPLIT / CLOUD WORKSTATION
+########################################
+
+.config
+.replit
+
+########################################
+# ANDROID
+########################################
+
+android/.gradle
+android/app/build
+android/build
+
+########################################
+# IOS
+########################################
+
+ios/build
+ios/Pods
+
+########################################
+# MOBILE BUILD
+########################################
 
 mobile/dist
-mobile/.expo
-_expo
+mobile/build
 
-logfile
-*.log
+########################################
+# MISC
+########################################
+
+coverage/
+.cache

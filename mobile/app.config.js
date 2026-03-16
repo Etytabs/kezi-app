@@ -3,7 +3,7 @@ export default ({ config }) => {
     ...config,
     extra: {
       ...config.extra,
-      openaiApiKey: process.env.OPENAI_API_KEY,
-    },
+      openaiApiKey: process.env.OPENAI_API_KEY || null
+    }
   };
 };

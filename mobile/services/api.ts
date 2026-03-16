@@ -5,7 +5,8 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 /* -------------------------------- */
 
 const API_BASE_URL =
-  process.env.EXPO_PUBLIC_API_URL || "http://localhost:3001/api";
+  process.env.EXPO_PUBLIC_API_URL ||
+  "https://scenic-myth-freight-classifieds.trycloudflare.com/api";
 
 console.log("API URL:", API_BASE_URL);
 
